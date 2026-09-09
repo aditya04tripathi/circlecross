@@ -11,9 +11,9 @@ test.describe("docs interactions", () => {
       await page.locator('[data-slot="sheet-content"] a[href="/#worlds"]').click();
       await expect(page).toHaveURL(/#worlds/);
     } else {
-      await page.locator("#hero a[href=\"#worlds\"]").click();
+      await page.locator('#hero a[href="#worlds"]').click();
       await expect(page).toHaveURL(/#worlds/);
-      await page.locator("header a[href=\"/#start\"]").click();
+      await page.locator('header a[href="/#start"]').click();
       await expect(page).toHaveURL(/#start/);
     }
 
@@ -38,7 +38,10 @@ test.describe("docs interactions", () => {
     await expect(page.locator("[aria-hidden='true'].fixed")).toBeVisible();
 
     await page.locator("#go").scrollIntoViewIfNeeded();
-    await page.getByRole("button", { name: /CircleCross Go/i }).first().click();
+    await page
+      .getByRole("button", { name: /CircleCross Go/i })
+      .first()
+      .click();
     await expect(page.getByText("Explore CircleCross Go")).toBeVisible();
     await expect(page.getByRole("link", { name: /Explore CircleCross Go/i })).toHaveAttribute(
       "href",

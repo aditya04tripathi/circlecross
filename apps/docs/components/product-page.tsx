@@ -7,14 +7,7 @@ import { writeWorldPreference } from "../lib/world-preference";
 import { ProductChapter } from "./product-chapter";
 import { SiteButton } from "./site-button";
 import { SiteFooter } from "./site-footer";
-import {
-  eyebrow,
-  hHero,
-  hSection,
-  hSubsection,
-  pageInset,
-  pyDense,
-} from "./styles";
+import { eyebrow, hHero, hSection, hSubsection, pageInset, pyDense } from "./styles";
 import { Arrow } from "./ui";
 
 type ProductPageViewProps = {
@@ -123,7 +116,9 @@ export function ProductPageView({ world }: ProductPageViewProps) {
                   <Arrow diagonal />
                 </SiteButton>
                 <p className="mt-3 max-w-[36ch] text-sm leading-[1.7] text-soft">{entry.hint}</p>
-                <p className="mt-4 max-w-[40ch] text-sm leading-[1.7] text-soft">{entry.description}</p>
+                <p className="mt-4 max-w-[40ch] text-sm leading-[1.7] text-soft">
+                  {entry.description}
+                </p>
               </li>
             ))}
           </ul>

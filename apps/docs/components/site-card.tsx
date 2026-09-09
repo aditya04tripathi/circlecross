@@ -34,7 +34,8 @@ export function SiteCard({
     <Tag
       className={cn(
         "min-w-0",
-        isPrinciple && "border-t border-line pt-[25px] max-md:grid max-md:grid-cols-[45px_1fr] max-md:gap-x-5",
+        isPrinciple &&
+          "border-t border-line pt-[25px] max-md:grid max-md:grid-cols-[45px_1fr] max-md:gap-x-5",
         className,
       )}
     >
@@ -50,7 +51,9 @@ export function SiteCard({
         </span>
       ) : null}
       {eyebrow ? (
-        <p className="mb-3 text-[10px] font-[550] tracking-[0.1em] text-soft uppercase">{eyebrow}</p>
+        <p className="mb-3 text-[10px] font-[550] tracking-[0.1em] text-soft uppercase">
+          {eyebrow}
+        </p>
       ) : null}
       <h3
         className={cn(

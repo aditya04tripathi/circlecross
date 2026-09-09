@@ -27,7 +27,11 @@ export const footerColumns: FooterColumn[] = [
     title: "Company",
     links: [
       // TODO: confirm production contact email before launch
-      { label: "hello@circlecross.app", href: "mailto:hello@circlecross.app", todo: "confirm email" },
+      {
+        label: "hello@circlecross.app",
+        href: "mailto:hello@circlecross.app",
+        todo: "confirm email",
+      },
       { label: "Our principles", href: "/#trust" },
     ],
   },

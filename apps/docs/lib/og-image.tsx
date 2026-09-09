@@ -45,65 +45,63 @@ export function createOgImage(path: IndexablePath): ImageResponse {
   const { title, description } = getOgLines(path);
 
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          background: PAPER,
-          padding: "64px 72px",
-          fontFamily: "sans-serif",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <MarkGlyph />
-          <span
-            style={{
-              fontSize: 36,
-              fontWeight: 600,
-              letterSpacing: "-0.04em",
-              color: INK,
-            }}
-          >
-            CircleCross
-          </span>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        background: PAPER,
+        padding: "64px 72px",
+        fontFamily: "sans-serif",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+        <MarkGlyph />
+        <span
+          style={{
+            fontSize: 36,
+            fontWeight: 600,
+            letterSpacing: "-0.04em",
+            color: INK,
+          }}
+        >
+          CircleCross
+        </span>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+        <div
+          style={{
+            width: 72,
+            height: 2,
+            background: LINE,
+          }}
+        />
+        <div
+          style={{
+            fontSize: 64,
+            fontWeight: 600,
+            letterSpacing: "-0.05em",
+            lineHeight: 1.1,
+            color: INK,
+            maxWidth: 980,
+          }}
+        >
+          {title}
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          <div
-            style={{
-              width: 72,
-              height: 2,
-              background: LINE,
-            }}
-          />
-          <div
-            style={{
-              fontSize: 64,
-              fontWeight: 600,
-              letterSpacing: "-0.05em",
-              lineHeight: 1.1,
-              color: INK,
-              maxWidth: 980,
-            }}
-          >
-            {title}
-          </div>
-          <div
-            style={{
-              fontSize: 28,
-              lineHeight: 1.4,
-              color: SOFT,
-              maxWidth: 860,
-            }}
-          >
-            {description}
-          </div>
+        <div
+          style={{
+            fontSize: 28,
+            lineHeight: 1.4,
+            color: SOFT,
+            maxWidth: 860,
+          }}
+        >
+          {description}
         </div>
       </div>
-    ),
+    </div>,
     { ...ogSize },
   );
 }

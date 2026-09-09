@@ -20,9 +20,7 @@ export async function POST(request: NextRequest) {
   }
 
   const world =
-    body && typeof body === "object" && "world" in body
-      ? (body as { world: unknown }).world
-      : null;
+    body && typeof body === "object" && "world" in body ? (body as { world: unknown }).world : null;
 
   if (typeof world !== "string" || !isWorldChoice(world)) {
     return NextResponse.json({ ok: false }, { status: 400 });

@@ -87,7 +87,8 @@ export default function Home() {
           <div className="relative z-[2] mt-[62px] flex items-end gap-[9%] min-[1600px]:mt-20 max-[1100px]:mt-[90px] max-[1100px]:gap-[6%] max-md:mt-[260px] max-md:justify-between max-md:gap-5">
             <div className="relative z-[1] max-md:[&>p]:pt-2.5">
               <p className="mb-6 max-w-[28ch] text-[17px] leading-[1.6] tracking-[-0.025em] max-md:text-sm max-md:leading-[1.6]">
-                Your world is full of people you haven't met. <span className="text-copper">Not yet.</span>
+                Your world is full of people you haven't met.{" "}
+                <span className="text-copper">Not yet.</span>
               </p>
               <LinkButton href="#worlds">Discover your world</LinkButton>
             </div>
@@ -140,13 +141,19 @@ export default function Home() {
             Different paths. Shared possibilities.
           </span>
         </section>
-        <section className={cn(pageInset, pyStatement, "scroll-mt-10 border-t border-line")} id="idea">
+        <section
+          className={cn(pageInset, pyStatement, "scroll-mt-10 border-t border-line")}
+          id="idea"
+        >
           <p className={eyebrow} data-reveal>
             Built around life. Not a feed.
           </p>
           <div className="max-w-[1100px]" data-manifesto>
             <h2
-              className={cn(hSubsection, "max-w-[22ch] text-[clamp(38px,5.1vw,78px)] max-md:text-[37px] max-md:leading-[1.23]")}
+              className={cn(
+                hSubsection,
+                "max-w-[22ch] text-[clamp(38px,5.1vw,78px)] max-md:text-[37px] max-md:leading-[1.23]",
+              )}
               aria-label={manifesto}
             >
               {manifestoWords.map(({ word, key }) => (

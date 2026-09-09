@@ -1,10 +1,8 @@
 export const pageInset = "px-[5.4%] max-md:px-[6%]";
 
-export const pyDense =
-  "py-[95px] max-[1100px]:py-20 max-md:py-16";
+export const pyDense = "py-[95px] max-[1100px]:py-20 max-md:py-16";
 
-export const pyStatement =
-  "py-[170px] max-[1100px]:py-[120px] max-md:py-20";
+export const pyStatement = "py-[170px] max-[1100px]:py-[120px] max-md:py-20";
 
 export const sectionSpace = `${pageInset} scroll-mt-10`;
 

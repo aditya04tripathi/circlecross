@@ -60,12 +60,7 @@ export function Start() {
       id="start"
     >
       <div className="flex items-center justify-between text-left">
-        <p
-          className={cn(
-            eyebrow,
-            "mb-6 max-md:mb-0 max-md:max-w-[220px] max-md:leading-[1.7]",
-          )}
-        >
+        <p className={cn(eyebrow, "mb-6 max-md:mb-0 max-md:max-w-[220px] max-md:leading-[1.7]")}>
           Your next chapter starts with a hello.
         </p>
         <Logo type="mark" className="h-auto w-[65px] text-start-cream max-md:w-10" />
@@ -85,7 +80,10 @@ export function Start() {
           An idea you haven't shared.
           <br />A circle you haven't found. Yet.
         </p>
-        <div className="min-w-0 max-w-[400px] shrink-0 max-md:w-full max-md:max-w-none" data-start-action>
+        <div
+          className="min-w-0 max-w-[400px] shrink-0 max-md:w-full max-md:max-w-none"
+          data-start-action
+        >
           <Label id={labelId} className="mb-[15px] block text-[11px]">
             Where will your story go?
           </Label>

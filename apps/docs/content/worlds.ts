@@ -23,13 +23,7 @@ export const worlds: World[] = [
       "New places. New interests. People who just get you. Make the first move towards a world that feels a little more yours.",
     story:
       "CircleCross Go is for the chapter when you are still finding your shape. New places open doors. New interests light a path. People who just get you make the first move feel possible. Go is a world that feels a little more yours, with a little more adventure in every hello.",
-    features: [
-      "Explore",
-      "Find your people",
-      "Try something new",
-      "New places",
-      "New interests",
-    ],
+    features: ["Explore", "Find your people", "Try something new", "New places", "New interests"],
     hint: "A little more adventure.",
     image: "/images/go.jpg",
     alt: "A group of friends sharing a relaxed moment in the park",

@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  Collapsible,
-  CollapsibleTrigger,
-} from "@circlecross/ui/components/collapsible";
+import { Collapsible, CollapsibleTrigger } from "@circlecross/ui/components/collapsible";
 import { cn } from "cn";
 import { useState } from "react";
 import { worlds } from "../content/worlds";
@@ -17,7 +14,11 @@ export function Worlds() {
 
   return (
     <section
-      className={cn(pageInset, pyDense, "scroll-mt-10 border-t border-border pt-[70px] max-md:pt-[35px]")}
+      className={cn(
+        pageInset,
+        pyDense,
+        "scroll-mt-10 border-t border-border pt-[70px] max-md:pt-[35px]",
+      )}
       id="worlds"
       data-worlds
     >

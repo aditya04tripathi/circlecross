@@ -6,13 +6,7 @@ import { cn } from "cn";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
-import {
-  encounterToggle,
-  eyebrow,
-  hSection,
-  pageInset,
-  pyDense,
-} from "./styles";
+import { encounterToggle, eyebrow, hSection, pageInset, pyDense } from "./styles";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 

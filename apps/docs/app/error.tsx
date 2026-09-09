@@ -2,11 +2,7 @@
 
 import { RecoveryPage } from "../components/recovery-page";
 
-export default function ErrorPage({
-  error,
-}: {
-  error: Error & { digest?: string };
-}) {
+export default function ErrorPage({ error }: { error: Error & { digest?: string } }) {
   void error;
   return <RecoveryPage kind="error" />;
 }
