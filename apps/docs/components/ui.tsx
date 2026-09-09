@@ -1,25 +1,15 @@
+import { Button } from "@circlecross/ui/components/button";
+import { cn } from "cn";
 import type { ReactNode } from "react";
-export function Mark({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 44 30" fill="none" aria-hidden="true">
-      <circle cx="15" cy="15" r="12" stroke="currentColor" strokeWidth="2.4" />
-      <circle cx="29" cy="15" r="12" stroke="currentColor" strokeWidth="2.4" />
-    </svg>
-  );
+import { SiteButton } from "./site-button";
+import { buttonIcon, siteCta, siteCtaLight, textLink } from "./styles";
+import { ArrowRightIcon, ArrowUpRightIcon } from "lucide-react";
+
+export function Arrow({ diagonal = false, className }: { diagonal?: boolean; className?: string }) {
+  const Icon = diagonal ? ArrowUpRightIcon : ArrowRightIcon;
+  return <Icon aria-hidden="true" className={cn("block size-[1em]", className)} />;
 }
-export function Arrow({ diagonal = false }: { diagonal?: boolean }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d={diagonal ? "M6 18 18 6M6 6h12v12" : "M4 12h15m-6-6 6 6-6 6"}
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+
 export function LinkButton({
   href,
   children,
@@ -30,11 +20,28 @@ export function LinkButton({
   light?: boolean;
 }) {
   return (
-    <a className={`button ${light ? "button-light" : ""}`} href={href}>
+    <SiteButton variant="primary" href={href} light={light}>
       {children}
-      <span className="button-icon">
-        <Arrow diagonal />
-      </span>
-    </a>
+    </SiteButton>
   );
 }
+
+export function TextLink({
+  href,
+  children,
+  onClick,
+  className,
+}: {
+  href: string;
+  children: ReactNode;
+  onClick?: () => void;
+  className?: string;
+}) {
+  return (
+    <SiteButton variant="link" href={href} onClick={onClick} className={className}>
+      {children}
+    </SiteButton>
+  );
+}
+
+export { Button, buttonIcon, siteCta, siteCtaLight, textLink };
