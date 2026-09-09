@@ -16,12 +16,7 @@ type WorldRowsProps = {
   className?: string;
 };
 
-export function WorldRows({
-  value,
-  onActivate,
-  labelledBy,
-  className,
-}: WorldRowsProps) {
+export function WorldRows({ value, onActivate, labelledBy, className }: WorldRowsProps) {
   const fallbackId = useId();
   const groupName = labelledBy ?? fallbackId;
   const index = Math.max(0, OPTIONS.indexOf(value));
@@ -70,12 +65,7 @@ export function WorldRows({
             />
             <span>
               CircleCross{" "}
-              <em
-                className={cn(
-                  "not-italic",
-                  active ? "text-copper" : "text-start-cream",
-                )}
-              >
+              <em className={cn("not-italic", active ? "text-copper-deep" : "text-start-cream")}>
                 {world.name}
               </em>
             </span>
