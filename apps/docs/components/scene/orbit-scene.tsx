@@ -1,25 +1,52 @@
 "use client";
+
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { type RefObject, useMemo, useRef } from "react";
 import { BufferGeometry, Float32BufferAttribute, type Group, MathUtils, Vector3 } from "three";
 
-function Sculpture({ progress }: { progress: React.RefObject<number> }) {
+function Sculpture({ progress }: { progress: RefObject<number> }) {
   const group = useRef<Group>(null);
   const orbits = useMemo(
     () =>
-      Array.from({ length: 18 }, (_, i) => {
+      Array.from({ length: 18 }, (_, orbitIndex) => {
         const points: number[] = [];
         for (let j = 0; j <= 160; j++) {
           const t = (j / 160) * Math.PI * 2;
           const p = new Vector3(Math.cos(t) * 2.65, Math.sin(t) * 2.65, 0);
-          p.applyAxisAngle(new Vector3(1, 0, 0), 0.35 + i * 0.125);
-          p.applyAxisAngle(new Vector3(0, 1, 0), i * 0.2);
+          p.applyAxisAngle(new Vector3(1, 0, 0), 0.35 + orbitIndex * 0.125);
+          p.applyAxisAngle(new Vector3(0, 1, 0), orbitIndex * 0.2);
           points.push(p.x, p.y, p.z);
         }
-        return new BufferGeometry().setAttribute("position", new Float32BufferAttribute(points, 3));
+        const geometry = new BufferGeometry().setAttribute(
+          "position",
+          new Float32BufferAttribute(points, 3),
+        );
+        return {
+          geometry,
+          key: geometry.uuid,
+          accent: orbitIndex % 3 === 0,
+        };
       }),
     [],
   );
+  const dots = useMemo(
+    () =>
+      Array.from({ length: 18 }, (_, dotIndex) => {
+        const t = dotIndex * 2.399;
+        return {
+          key: `dot-${t.toFixed(3)}`,
+          position: [
+            Math.cos(t) * 2.5,
+            Math.sin(t) * 2.25,
+            Math.sin(dotIndex * 1.7) * 0.9,
+          ] as const,
+          radius: dotIndex % 4 === 0 ? 0.09 : 0.038,
+          color: dotIndex % 3 === 0 ? "#f9b879" : "#a55e3a",
+        };
+      }),
+    [],
+  );
+
   useFrame((state, delta) => {
     if (!group.current) return;
     const time = state.clock.elapsedTime;
@@ -39,14 +66,15 @@ function Sculpture({ progress }: { progress: React.RefObject<number> }) {
     const scale = 1 - progress.current * 0.16;
     group.current.scale.setScalar(scale);
   });
+
   return (
     <group ref={group}>
-      {orbits.map((geometry, i) => (
-        <lineLoop key={i} geometry={geometry}>
+      {orbits.map((orbit) => (
+        <lineLoop key={orbit.key} geometry={orbit.geometry}>
           <lineBasicMaterial
-            color={i % 3 === 0 ? "#71381f" : "#ba784f"}
+            color={orbit.accent ? "#71381f" : "#ba784f"}
             transparent
-            opacity={i % 3 === 0 ? 0.8 : 0.38}
+            opacity={orbit.accent ? 0.8 : 0.38}
           />
         </lineLoop>
       ))}
@@ -54,29 +82,17 @@ function Sculpture({ progress }: { progress: React.RefObject<number> }) {
         <sphereGeometry args={[0.48, 48, 48]} />
         <meshStandardMaterial color="#bd683b" metalness={0.78} roughness={0.28} />
       </mesh>
-      {Array.from({ length: 18 }, (_, i) => {
-        const t = i * 2.399;
-        return (
-          <mesh key={i} position={[Math.cos(t) * 2.5, Math.sin(t) * 2.25, Math.sin(i * 1.7) * 0.9]}>
-            <sphereGeometry args={[i % 4 === 0 ? 0.09 : 0.038, 12, 12]} />
-            <meshStandardMaterial
-              color={i % 3 === 0 ? "#f9b879" : "#a55e3a"}
-              metalness={0.65}
-              roughness={0.3}
-            />
-          </mesh>
-        );
-      })}
+      {dots.map((dot) => (
+        <mesh key={dot.key} position={[...dot.position]}>
+          <sphereGeometry args={[dot.radius, 12, 12]} />
+          <meshStandardMaterial color={dot.color} metalness={0.65} roughness={0.3} />
+        </mesh>
+      ))}
     </group>
   );
 }
-export function OrbitScene({
-  progress,
-  active,
-}: {
-  progress: React.RefObject<number>;
-  active: boolean;
-}) {
+
+export function OrbitScene({ progress, active }: { progress: RefObject<number>; active: boolean }) {
   return (
     <Canvas
       dpr={[1, 1.5]}

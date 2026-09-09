@@ -10,7 +10,7 @@ export function StoryMotion() {
         gsap.registerPlugin(ScrollTrigger);
         const mm = gsap.matchMedia();
         mm.add("(prefers-reduced-motion: no-preference)", () => {
-          gsap.from(".hero-title > span", {
+          gsap.from("[data-hero-title] > span", {
             y: 70,
             opacity: 0,
             duration: 1.4,
@@ -27,14 +27,14 @@ export function StoryMotion() {
             });
           });
           gsap.fromTo(
-            ".manifesto-word",
+            "[data-manifesto-word]",
             { opacity: 0.65 },
             {
               opacity: 1,
               stagger: 0.12,
               ease: "none",
               scrollTrigger: {
-                trigger: ".manifesto",
+                trigger: "[data-manifesto]",
                 start: "top 75%",
                 end: "bottom 55%",
                 scrub: 1,
@@ -43,31 +43,31 @@ export function StoryMotion() {
           );
         });
         mm.add("(min-width: 1000px) and (prefers-reduced-motion: no-preference)", () => {
-          gsap.to(".identity-orbits", {
+          gsap.to("[data-identity-orbits]", {
             rotation: 70,
             scale: 1.12,
             ease: "none",
             scrollTrigger: {
-              trigger: ".identity",
+              trigger: "[data-identity]",
               start: "top bottom",
               end: "bottom top",
               scrub: 1.2,
             },
           });
-          gsap.to(".identity-track", {
+          gsap.to("[data-identity-track]", {
             xPercent: -13,
             ease: "none",
             scrollTrigger: {
-              trigger: ".identity",
+              trigger: "[data-identity]",
               pin: true,
               start: "top top",
-              end: "+=450",
+              end: "+=100%",
               scrub: 1,
             },
           });
         });
         const resizeObserver = new ResizeObserver(() => ScrollTrigger.refresh());
-        const chapters = document.querySelector(".world-chapters");
+        const chapters = document.querySelector("[data-world-chapters]");
         if (chapters) resizeObserver.observe(chapters);
         cleanup = () => {
           resizeObserver.disconnect();

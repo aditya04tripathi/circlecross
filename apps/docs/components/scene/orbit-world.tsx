@@ -70,11 +70,16 @@ export function OrbitWorld() {
     };
   }, []);
   return (
-    <div className="orbit-world" ref={host} aria-hidden="true">
+    <div
+      className="pointer-events-none absolute top-[65px] right-[-40px] -z-10 h-[min(61vw,900px)] w-[min(61vw,900px)] max-[1100px]:top-[100px] max-[1100px]:right-[-90px] max-[1100px]:h-[73vw] max-[1100px]:w-[73vw] max-md:top-[248px] max-md:right-[-20%] max-md:h-[115vw] max-md:max-h-[610px] max-md:w-[115vw] max-md:max-w-[610px] max-md:opacity-[0.82]"
+      ref={host}
+      aria-hidden="true"
+      data-orbit-world
+    >
       <OrbitFallback />
       {enabled && (
         <SceneBoundary>
-          <div className="webgl-layer">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--paper)_40%,transparent_70%)] [&_canvas]:relative">
             <Scene progress={progress} active={active} />
           </div>
         </SceneBoundary>
