@@ -9,7 +9,7 @@ import {
   type WorldChoice,
 } from "../lib/world-preference";
 import { Logo } from "./logo";
-import { eyebrow, pageInset, pyDense } from "./styles";
+import { eyebrow, pageInset } from "./styles";
 import { WorldRows } from "./world-rows";
 
 const VALID: WorldChoice[] = ["Go", "Uni", "Pro"];
@@ -54,8 +54,7 @@ export function Start() {
     <section
       className={cn(
         pageInset,
-        pyDense,
-        "relative scroll-mt-10 overflow-hidden bg-start text-center text-start-cream max-[1100px]:[&_[data-start-action]]:min-w-[40%] [&_a:focus-visible]:outline-white [&_button:focus-visible]:outline-white",
+        "relative scroll-mt-10 overflow-hidden bg-start py-[70px] text-center text-start-cream max-[1100px]:py-16 max-[1100px]:[&_[data-start-action]]:min-w-[40%] max-md:py-14 [&_a:focus-visible]:outline-white [&_button:focus-visible]:outline-white",
       )}
       id="start"
     >
@@ -73,7 +72,7 @@ export function Start() {
           <em>out there</em>
         </u>
       </h2>
-      <div className="mt-10 flex items-start justify-between gap-16 text-left max-md:mt-8 max-md:flex-col max-md:gap-8">
+      <div className="mt-6 flex items-center justify-between gap-16 text-left max-md:mt-6 max-md:flex-col max-md:items-start max-md:gap-8">
         <p className="max-w-[28ch] text-sm leading-[1.8] max-md:text-xs">
           A friend you haven't met.
           <br />

@@ -67,9 +67,8 @@ export default function Home() {
           )}
           id="hero"
         >
-          <div className="relative z-[2] flex justify-between text-[11px] text-soft max-md:text-[10px] max-md:[&>span:last-child]:hidden">
-            <span>A little closer to your people.</span>
-            <span>Connection, in real life.</span>
+          <div className="relative z-[2] flex justify-between text-base text-primary text-bold max-md:text-[10px] max-md:[&>span:last-child]:hidden">
+            <span>Different paths. Shared possibilities.</span>
           </div>
           <OrbitWorld />
           <h1
@@ -134,12 +133,6 @@ export default function Home() {
               <span className="relative h-[62px] w-px bg-line before:absolute before:top-0 before:left-0 before:h-[22px] before:w-px before:animate-scrollhint before:bg-ink" />
             </Button>
           </div>
-          <span
-            className="absolute right-[8%] bottom-[35px] text-[9px] text-soft max-md:hidden"
-            aria-hidden="true"
-          >
-            Different paths. Shared possibilities.
-          </span>
         </section>
         <section
           className={cn(pageInset, pyStatement, "scroll-mt-10 border-t border-line")}
