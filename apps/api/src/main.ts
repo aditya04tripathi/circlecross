@@ -8,8 +8,10 @@ async function bootstrap() {
 
   loadRootEnvironment();
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.API_PORT ?? 8005);
+  const port = Number(process.env.PORT ?? process.env.API_PORT ?? 8005);
+  const host = process.env.HOST ?? "::";
+  await app.listen(port, host);
 
-  logger.log(`API is running on port ${process.env.API_PORT ?? 8005}`);
+  logger.log(`API is running on ${host}:${port}`);
 }
 await bootstrap();
