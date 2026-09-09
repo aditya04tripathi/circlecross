@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { Button } from "#components/button";
 import { Input } from "#components/input";
 import { Separator } from "#components/separator";

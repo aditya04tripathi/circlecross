@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { Button, buttonVariants } from "#components/button";
 import { cn } from "cn";
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";

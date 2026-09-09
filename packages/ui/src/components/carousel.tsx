@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { Button } from "#components/button";
 import { cn } from "cn";
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
