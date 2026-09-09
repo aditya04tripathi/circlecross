@@ -1,80 +1,104 @@
 "use client";
-import { useEffect, useState } from "react";
-import { Arrow, Mark } from "./ui";
+
+import { Label } from "@circlecross/ui/components/label";
+import { cn } from "cn";
+import { useEffect, useEffectEvent, useId, useState } from "react";
+import {
+  readWorldPreference,
+  writeWorldPreference,
+  type WorldChoice,
+} from "../lib/world-preference";
+import { Logo } from "./logo";
+import { eyebrow, pageInset, pyDense } from "./styles";
+import { WorldRows } from "./world-rows";
+
+const VALID: WorldChoice[] = ["Go", "Uni", "Pro"];
+
 export function Start() {
-  const [choice, setChoice] = useState("Go");
+  const [choice, setChoice] = useState<WorldChoice>("Go");
   const [saved, setSaved] = useState<"idle" | "saved" | "unavailable">("idle");
+  const labelId = useId();
+
+  const activate = useEffectEvent(async (next: WorldChoice) => {
+    setChoice(next);
+    if (await writeWorldPreference(next)) {
+      setSaved("saved");
+    } else {
+      setSaved("unavailable");
+    }
+  });
+
+  useEffect(() => {
+    const stored = readWorldPreference();
+    if (stored) {
+      setChoice(stored);
+      setSaved("saved");
+    }
+  }, []);
+
   useEffect(() => {
     const choose = (event: Event) => {
       if (
         event instanceof CustomEvent &&
         typeof event.detail === "string" &&
-        ["Go", "Uni", "Pro"].includes(event.detail)
+        VALID.includes(event.detail as WorldChoice)
       ) {
-        setChoice(event.detail);
-        setSaved("idle");
+        activate(event.detail as WorldChoice);
       }
     };
     window.addEventListener("circlecross:choose", choose);
     return () => window.removeEventListener("circlecross:choose", choose);
   }, []);
+
   return (
-    <section className="start section-space" id="start">
-      <div className="start-top">
-        <p className="eyebrow">Your next chapter starts with a hello.</p>
-        <Mark />
+    <section
+      className={cn(
+        pageInset,
+        pyDense,
+        "relative scroll-mt-10 overflow-hidden bg-start text-center text-start-cream max-[1100px]:[&_[data-start-action]]:min-w-[40%] [&_a:focus-visible]:outline-white [&_button:focus-visible]:outline-white",
+      )}
+      id="start"
+    >
+      <div className="flex items-center justify-between text-left">
+        <p
+          className={cn(
+            eyebrow,
+            "mb-6 max-md:mb-0 max-md:max-w-[220px] max-md:leading-[1.7]",
+          )}
+        >
+          Your next chapter starts with a hello.
+        </p>
+        <Logo type="mark" className="h-auto w-[65px] text-start-cream max-md:w-10" />
       </div>
-      <h2>
+      <h2 className="mt-2 text-[clamp(64px,9.5vw,140px)] leading-[1.02] tracking-[-0.07em] max-md:mt-6 max-md:text-[15vw] [&_em]:tracking-[-0.06em] [&_em]:text-start-cream">
         Your people
         <br />
-        are <em>out there.</em>
+        are{" "}
+        <u>
+          <em>out there</em>
+        </u>
       </h2>
-      <div className="start-bottom">
-        <p>
-          A friend you haven&apos;t met.
+      <div className="mt-10 flex items-start justify-between gap-16 text-left max-md:mt-8 max-md:flex-col max-md:gap-8">
+        <p className="max-w-[28ch] text-sm leading-[1.8] max-md:text-xs">
+          A friend you haven't met.
           <br />
-          An idea you haven&apos;t shared.
-          <br />A circle you haven&apos;t found. Yet.
+          An idea you haven't shared.
+          <br />A circle you haven't found. Yet.
         </p>
-        <div className="start-action">
-          <label htmlFor="world-choice">Where will your story go?</label>
-          <div className="choice-row">
-            <select
-              id="world-choice"
-              value={choice}
-              onChange={(event) => {
-                setChoice(event.target.value);
-                setSaved("idle");
-              }}
-            >
-              <option value="Go">CircleCross Go</option>
-              <option value="Uni">CircleCross Uni</option>
-              <option value="Pro">CircleCross Pro</option>
-            </select>
-            <button
-              type="button"
-              className="button button-light"
-              onClick={() => {
-                try {
-                  localStorage.setItem("circlecross-world", choice);
-                  setSaved("saved");
-                } catch {
-                  setSaved("unavailable");
-                }
-              }}
-            >
-              Choose your circle
-              <span className="button-icon">
-                <Arrow diagonal />
-              </span>
-            </button>
-          </div>
-          <p className="start-status" role="status">
+        <div className="min-w-0 max-w-[400px] shrink-0 max-md:w-full max-md:max-w-none" data-start-action>
+          <Label id={labelId} className="mb-[15px] block text-[11px]">
+            Where will your story go?
+          </Label>
+          <WorldRows labelledBy={labelId} value={choice} onActivate={activate} />
+          <p
+            className="mt-[15px] min-h-[35px] max-w-[465px] text-[10px] leading-[1.7] text-[#f6e1d3]"
+            role="status"
+          >
             {saved === "saved"
-              ? `Your ${choice} preference is saved on this device. CircleCross is taking shape—come back for launch updates.`
+              ? `Your ${choice} preference is saved on this device. CircleCross is taking shape. Come back for launch updates.`
               : saved === "unavailable"
                 ? `You chose ${choice}. Your browser could not save this preference. You can still explore every CircleCross world.`
-                : "A new way to connect is taking shape. Explore your world today."}
+                : null}
           </p>
         </div>
       </div>
