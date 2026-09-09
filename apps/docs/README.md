@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# CircleCross public website
 
-## Getting Started
+An editorial marketing experience built from scratch with Next.js, strict TypeScript, React Three Fiber and GSAP.
 
-First, run the development server:
+## Run
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- `pnpm --filter docs dev` — development on port 3001.
+- `pnpm --filter docs build` — static page generation and production bundle.
+- `pnpm --filter docs lint`
+- `pnpm --filter docs check-types`
+- `pnpm --filter docs format:check`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Set `SITE_URL` to the deployed public origin for social metadata. It is validated during build; the local fallback is `http://localhost:3011`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
+- `app/`: homepage, privacy information, document metadata and responsive design system.
+- `components/`: navigation, encounter explorer, product chapters and final selection interaction.
+- `components/scene/`: lazy WebGL orbit sculpture and independent SVG fallback.
+- `components/motion/`: responsive GSAP timelines and lifecycle cleanup.
+- `design-assets.todo.md`: custom photography prompts. No images were generated.
 
-## Learn More
+## Behavior and accessibility
 
-To learn more about Next.js, take a look at the following resources:
+Content renders on the server and remains readable without animation. Mobile and reduced-motion visitors receive the lightweight orbital SVG instead of the WebGL bundle. The 3D canvas uses capped pixel density and pauses outside the viewport or in hidden tabs. Native scrolling is preserved. Navigation uses a native modal dialog with Escape dismissal and focus restoration. Product chapters are keyboard-accessible disclosures; encounter choices expose their selected state.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The final CTA stores only a product preference on the current device. It does not submit contact details, create an account or claim to join a waitlist. Connect the final action to a real onboarding service when the products launch. The privacy copy intentionally covers this marketing site only.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Photographs
 
-## Deploy on Vercel
+Temporary Unsplash photographs are served locally through Next Image: photo-1529156069898-49953e39b3ac (friends), photo-1523240795612-9a054b0db644 (students), photo-1522071820081-009f0129c71c (collaboration). Replace with brand-owned photography following the TODO prompts before a brand campaign.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Default exports are used only where Next.js route/config conventions require them. Reusable components use named exports.
