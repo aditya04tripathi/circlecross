@@ -1,17 +1,21 @@
 {
-  "name": "circle-cross",
+  "name": "circlecross",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint:fix": "turbo run lint:fix",
+    "check": "turbo run check",
+    "check:fix": "turbo run check:fix",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
-    "prettier": "3.9.6",
+    "@biomejs/biome": "2.5.12",
     "turbo": "^2.10.12",
-    "typescript": "7.0.2"
+    "typescript": "^6.0.2"
   },
   "packageManager": "pnpm@11.25.0",
   "engines": {
