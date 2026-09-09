@@ -4,7 +4,7 @@ This workspace is the public marketing website, despite the historical `docs` na
 
 Use `pnpm --filter docs dev`, `build`, `lint`, `check-types`, and `format:check` from the monorepo root.
 
-The homepage is composed in `app/page.tsx`; reusable interactive sections are in `components/`; procedural WebGL and its SVG fallback live in `components/scene/`; GSAP timelines live in `components/motion/`. The responsive design system is in `app/globals.css`.
+The homepage is composed in `app/page.tsx`; reusable interactive sections are in `components/`; procedural WebGL and its SVG fallback live in `components/scene/`; GSAP timelines live in `components/motion/`. Style with Tailwind utility classes in components; shared class strings live in `components/styles.ts`. Keep `app/globals.css` limited to Tailwind imports, theme tokens, keyframes, and document base styles — do not add component CSS classes there.
 
 Preserve the warm-paper, copper and olive editorial direction, spacious typography and restrained orbital motif. Respect reduced motion, native scrolling, touch layouts, semantic controls and keyboard focus. Never make content dependent on WebGL. Keep Three.js lazy and pause offscreen rendering.
 
