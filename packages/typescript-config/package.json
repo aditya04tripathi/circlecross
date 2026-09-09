@@ -1,5 +1,5 @@
 {
-  "name": "@circlecross/typescript-config/",
+  "name": "@circlecross/typescript-config",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -16,7 +16,8 @@
   },
   "exports": {
     "./base": "./base.json",
-    "./next": "./next.json",
+    "./next": "./nextjs.json",
+    "./nextjs": "./nextjs.json",
     "./react-library": "./react-library.json",
     "./nest": "./nest.json"
   }
