@@ -10,7 +10,7 @@ An editorial marketing experience built from scratch with Next.js, strict TypeSc
 - `pnpm --filter docs check-types`
 - `pnpm --filter docs format:check`
 
-Set `SITE_URL` to the deployed public origin for social metadata. It is validated during build; the local fallback is `http://localhost:3011`.
+Set `SITE_URL` to the deployed public origin for social metadata. It is required at build time (Docker `ARG`/`ENV`) so Open Graph URLs are not baked as localhost. The local fallback is `http://localhost:8004`.
 
 ## Structure
 

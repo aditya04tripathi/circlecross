@@ -3,14 +3,7 @@ import type { Metadata } from "next";
 export const OG_TITLE_MAX = 60;
 export const OG_DESCRIPTION_MAX = 90;
 
-export const indexablePaths = [
-  "/",
-  "/go",
-  "/uni",
-  "/pro",
-  "/privacy",
-  "/terms",
-] as const;
+export const indexablePaths = ["/", "/go", "/uni", "/pro", "/privacy", "/terms"] as const;
 
 export type IndexablePath = (typeof indexablePaths)[number];
 
@@ -47,7 +40,7 @@ export type SeoDefaults = {
 };
 
 function siteOrigin(): string {
-  const raw = process.env.SITE_URL ?? "http://localhost:3011";
+  const raw = process.env.SITE_URL ?? "http://localhost:8004";
   const url = new URL(raw);
   if (!["http:", "https:"].includes(url.protocol)) {
     throw new Error("SITE_URL must be an HTTP(S) URL");
@@ -78,15 +71,7 @@ export const seoPages: Record<IndexablePath, SeoPage> = {
     path: "/",
     title: "Life happens where circles cross.",
     description: seoDefaults.defaultDescription,
-    keywords: [
-      "CircleCross",
-      "social",
-      "community",
-      "Go",
-      "Uni",
-      "Pro",
-      "connections",
-    ],
+    keywords: ["CircleCross", "social", "community", "Go", "Uni", "Pro", "connections"],
     jsonLdType: "WebSite",
     ogTitle: "CircleCross",
     ogDescription: "Life happens where circles cross.",
@@ -116,12 +101,7 @@ export const seoPages: Record<IndexablePath, SeoPage> = {
     title: "Pro",
     description:
       "Go beyond the introduction. Meet thoughtful people, exchange ideas and build professional relationships with room to grow.",
-    keywords: [
-      "CircleCross Pro",
-      "professional network",
-      "collaboration",
-      "workplaces",
-    ],
+    keywords: ["CircleCross Pro", "professional network", "collaboration", "workplaces"],
     jsonLdType: "WebPage",
     ogTitle: "CircleCross Pro",
     ogDescription: "Good work starts with people. A new kind of network.",
@@ -158,9 +138,7 @@ function resolvedOg(page: SeoPage): { title: string; description: string } {
 function assertOgLengths(page: SeoPage): void {
   const og = resolvedOg(page);
   if (og.title.length > OG_TITLE_MAX) {
-    throw new Error(
-      `OG title for ${page.path} is ${og.title.length} chars (max ${OG_TITLE_MAX})`,
-    );
+    throw new Error(`OG title for ${page.path} is ${og.title.length} chars (max ${OG_TITLE_MAX})`);
   }
   if (og.description.length > OG_DESCRIPTION_MAX) {
     throw new Error(
@@ -178,25 +156,21 @@ export function assertSitemapPathsSubset(paths: string[]): void {
   for (const path of paths) {
     const normalized = path === "" ? "/" : path.startsWith("/") ? path : `/${path}`;
     if (!keys.has(normalized)) {
-      throw new Error(
-        `Sitemap path ${normalized} is missing from seoPages keys`,
-      );
+      throw new Error(`Sitemap path ${normalized} is missing from seoPages keys`);
     }
   }
 }
 
-export function generateSeo(
-  path: IndexablePath,
-  overrides?: Partial<SeoPage>,
-): Metadata {
+export function generateSeo(path: IndexablePath, overrides?: Partial<SeoPage>): Metadata {
   const page: SeoPage = { ...seoPages[path], ...overrides, path };
   assertOgLengths(page);
   const origin = siteOrigin();
   const canonicalPath = page.canonicalPath ?? page.path;
   const canonical = `${origin}${canonicalPath === "/" ? "" : canonicalPath}`;
   const og = resolvedOg(page);
-  const ogImagePath = page.ogImagePath ?? `${canonicalPath === "/" ? "" : canonicalPath}/opengraph-image`;
-  const ogImageUrl = `${origin}${ogImagePath.startsWith("/") ? ogImagePath : `/${ogImagePath}`}`;
+  const ogImagePath =
+    page.ogImagePath ?? `${canonicalPath === "/" ? "" : canonicalPath}/opengraph-image`;
+  const ogImageUrl = ogImagePath.startsWith("/") ? ogImagePath : `/${ogImagePath}`;
 
   const facebookAppId = process.env.FACEBOOK_APP_ID;
   const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
@@ -206,9 +180,7 @@ export function generateSeo(
 
   return {
     metadataBase: new URL(origin),
-    title: isHome
-      ? { absolute: `${seoDefaults.siteName} — ${page.title}` }
-      : page.title,
+    title: isHome ? { absolute: `${seoDefaults.siteName} — ${page.title}` } : page.title,
     description: page.description,
     keywords: page.keywords,
     alternates: { canonical },
@@ -236,12 +208,8 @@ export function generateSeo(
       images: [ogImageUrl],
       ...(twitterSite ? { site: twitterSite } : {}),
     },
-    ...(facebookAppId
-      ? { other: { "fb:app_id": facebookAppId } }
-      : {}),
-    ...(googleVerification
-      ? { verification: { google: googleVerification } }
-      : {}),
+    ...(facebookAppId ? { other: { "fb:app_id": facebookAppId } } : {}),
+    ...(googleVerification ? { verification: { google: googleVerification } } : {}),
   };
 }
 

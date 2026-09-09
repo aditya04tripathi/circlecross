@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { assertSitemapPathsSubset, indexablePaths } from "../content/seo";
 
-const siteUrl = process.env.SITE_URL ?? "http://localhost:3011";
+const siteUrl = process.env.SITE_URL ?? "http://localhost:8004";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const origin = new URL(siteUrl).origin;

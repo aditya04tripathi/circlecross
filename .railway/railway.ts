@@ -110,7 +110,7 @@ export default defineRailway((ctx) => {
     },
     env: {
       NODE_ENV: "production",
-      SITE_URL: "https://${{RAILWAY_PUBLIC_DOMAIN}}",
+      SITE_URL: "https://www.circlecross.app",
       HOSTNAME: "::",
     },
   });
