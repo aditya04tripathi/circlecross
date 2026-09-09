@@ -5,31 +5,39 @@
   "scripts": {
     "dev": "next dev --port 8004",
     "build": "next build",
-    "start": "next start --port 8004",
+    "start": "node .next/standalone/apps/docs/server.js",
     "check-types": "next typegen && tsc --noEmit",
     "format": "biome format --write .",
     "format:check": "biome format .",
     "lint": "biome lint .",
     "lint:fix": "biome lint --write .",
     "check": "biome check .",
-    "check:fix": "biome check --write ."
+    "check:fix": "biome check --write .",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@circlecross/ui": "workspace:*",
+    "@gsap/react": "^2.1.2",
+    "@react-three/fiber": "^9.3.0",
+    "cn": "^0.2.6",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.42.0",
     "next": "16.3.4",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "three": "^0.180.0",
-    "@react-three/fiber": "^9.3.0",
-    "gsap": "^3.15.0",
-    "@gsap/react": "^2.1.2"
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@circlecross/typescript-config": "workspace:*",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^26.4.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@types/three": "^0.180.0",
+    "playwright": "^1.63.0",
+    "tailwindcss": "^4",
     "typescript": "^6.0.2"
   }
 }
