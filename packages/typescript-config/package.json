@@ -1,9 +1,23 @@
 {
-  "name": "@repo/typescript-config",
+  "name": "@circlecross/typescript-config/",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write ."
+  },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    "./base": "./base.json",
+    "./next": "./next.json",
+    "./react-library": "./react-library.json",
+    "./nest": "./nest.json"
   }
 }
