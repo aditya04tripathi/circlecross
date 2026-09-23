@@ -2,7 +2,6 @@ import { JsonLd } from "../../components/json-ld";
 import { MarketingShell } from "../../components/marketing-shell";
 import { SiteFooter } from "../../components/site-footer";
 import { ConnectOsGrid } from "../../components/uni/connect-os-grid";
-import { FeatureCatalogue } from "../../components/uni/feature-catalogue";
 import { InstitutionalTrust } from "../../components/uni/institutional-trust";
 import { SignatureProgrammes } from "../../components/uni/signature-programmes";
 import { UniBridgeSection } from "../../components/uni/uni-bridge-section";
@@ -20,7 +19,6 @@ export default function UniPage() {
         <UniHero />
         <ConnectOsGrid />
         <SignatureProgrammes />
-        <FeatureCatalogue />
         <InstitutionalTrust />
         <UniBridgeSection />
         <UniCta />

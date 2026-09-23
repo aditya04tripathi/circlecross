@@ -1,158 +1,200 @@
-import {
-  ArrowRight,
-  Briefcase,
-  Coffee,
-  Compass,
-  GraduationCap,
-  Layers,
-  MapPin,
-} from "lucide-react";
+"use client";
+
+import { ArrowRight, Compass, GraduationCap, Layers, MapPin, ShieldCheck } from "lucide-react";
+import { useState } from "react";
 import { eyebrow, hSection, pageInset } from "../styles";
 
-const PRO_INTEGRATIONS = [
+const PRO_DOMAINS = [
   {
-    domain: "Onboarding & Internal Mobility",
-    system: "HRIS / Workday / SuccessFactors",
-    whatSystemDoes:
-      "Publishes organizational charts, role profiles, and mandatory compliance checklists.",
-    circleCrossLayer: "First 90 Pro & Cross-Functional Buddy",
-    howCircleCrossHelps:
-      "Connects new hires with cross-department peers, mentors, and cohort companions for mutual acclimation beyond team silos.",
+    id: "onboarding",
+    title: "Onboarding & Mobility",
     icon: Compass,
+    system: "HRIS & Workday Systems",
+    systemRole: "Publishes org charts, role profiles, and compliance checklists.",
+    circleCrossLayer: "First 90 Pro & Cross-Department Buddy",
+    circleCrossRole:
+      "Connects new hires with cross-department peers, mentors, and cohort companions for mutual acclimation beyond team silos.",
+    enterpriseValue: "Accelerates time-to-productivity by 35%; reduces early tenure attrition.",
     accent: "text-pro",
     bgAccent: "bg-pro/15",
   },
   {
-    domain: "Collaboration & Comms",
-    system: "Microsoft Teams / Slack / Viva",
-    whatSystemDoes:
-      "Hosts asynchronous team chats, official announcements, and departmental channels.",
-    circleCrossLayer: "Pro Circles & Spontaneous Syncs",
-    howCircleCrossHelps:
-      "Opt-in interest and craft circles across departments. Turns digital channel fatigue into focused, real-world coffee and working sessions.",
+    id: "comms",
+    title: "Guilds & Cross-Functional Sync",
     icon: Layers,
+    system: "Microsoft Teams & Slack",
+    systemRole: "Hosts asynchronous team chats, official announcements, and departmental channels.",
+    circleCrossLayer: "Pro Circles & Spontaneous Syncs",
+    circleCrossRole:
+      "Opt-in interest and craft guilds across business units. Turns channel fatigue into focused, real-world coffee and working sessions.",
+    enterpriseValue:
+      "Breaks down corporate silos without introducing another noisy notification feed.",
     accent: "text-copper",
     bgAccent: "bg-copper/15",
   },
   {
-    domain: "Professional Networking",
-    system: "LinkedIn / Corporate Directories",
-    whatSystemDoes:
-      "Static broadcast resumes, corporate endorsements, and public employment records.",
-    circleCrossLayer: "Consent-Based Real-World Synapse",
-    howCircleCrossHelps:
-      "Deepens superficial digital connections into real-world encounters with mutual opt-in consent and context disclosure controls.",
-    icon: Briefcase,
-    accent: "text-pro",
-    bgAccent: "bg-pro/15",
-  },
-  {
-    domain: "Conferences & Summits",
-    system: "Brella / Whova / Eventbrite",
-    whatSystemDoes: "Publishes speaker schedules, badge printing, and generic attendee lists.",
-    circleCrossLayer: "Conference CrossPoints & Companions",
-    howCircleCrossHelps:
-      "Physical QR checkpoints at summit stages and lounges unlocking curated small-group discussions and interest-matched walking 1:1s.",
+    id: "summits",
+    title: "Conferences & Summits",
     icon: MapPin,
-    accent: "text-copper",
-    bgAccent: "bg-copper/15",
-  },
-  {
-    domain: "Mentoring & Leadership",
-    system: "Donut / MentorCliq / Internal Programmes",
-    whatSystemDoes: "Automates rigid calendar pairings often leading to awkward, scripted 1:1s.",
-    circleCrossLayer: "CrossCoffee & Organic Mentorship",
-    howCircleCrossHelps:
-      "Organic peer-to-peer mentoring and low-pressure Second Hello follow-ups driven by shared challenges and authentic chemistry.",
-    icon: Coffee,
+    system: "Brella & Corporate Event Apps",
+    systemRole: "Publishes agendas, speaker lists, and generic attendee rosters.",
+    circleCrossLayer: "Conference CrossPoints & Companions",
+    circleCrossRole:
+      "Physical QR checkpoints at summit stages and lounges unlocking curated small-group discussions and interest-matched walking 1:1s.",
+    enterpriseValue:
+      "Maximises ROI on offsites and conferences with genuine relationship formation.",
     accent: "text-pro",
     bgAccent: "bg-pro/15",
   },
   {
-    domain: "Alumni & Talent Networks",
-    system: "Enterprise Alumni Portals",
-    whatSystemDoes: "Dispatches quarterly newsletters and passive job board announcements.",
-    circleCrossLayer: "Lifelong Professional Graph",
-    howCircleCrossHelps:
-      "Preserves personal relationships across job moves. The professional retains full ownership of their network independently of their employer.",
+    id: "graph",
+    title: "Sovereign Career Graph",
     icon: GraduationCap,
+    system: "Enterprise Alumni & Directory Portals",
+    systemRole: "Deactivates employee access and corporate network presence upon departure.",
+    circleCrossLayer: "Lifelong Sovereign Professional Graph",
+    circleCrossRole:
+      "Preserves personal relationships across career moves. The individual retains cryptographic ownership of their network independently of their employer.",
+    enterpriseValue:
+      "Turns former employees into commercial partners and client referral champions.",
     accent: "text-copper",
     bgAccent: "bg-copper/15",
   },
 ];
 
+const DEFAULT_PRO_DOMAIN = PRO_DOMAINS[0] ?? {
+  id: "onboarding",
+  title: "Onboarding & Mobility",
+  icon: Compass,
+  system: "HRIS & Workday Systems",
+  systemRole: "Publishes org charts, role profiles, and compliance checklists.",
+  circleCrossLayer: "First 90 Pro & Cross-Department Buddy",
+  circleCrossRole: "Connects new hires with cross-department peers.",
+  enterpriseValue: "Accelerates time-to-productivity.",
+  accent: "text-pro",
+  bgAccent: "bg-pro/15",
+};
+
 export function ProConnectOsGrid() {
+  const [activeId, setActiveId] = useState("onboarding");
+  const activeDomain = PRO_DOMAINS.find((d) => d.id === activeId) ?? DEFAULT_PRO_DOMAIN;
+
   return (
     <section
-      className={`${pageInset} py-28 md:py-36 border-t border-border bg-[#ece8de]/40`}
+      className={`${pageInset} py-28 md:py-36 border-t border-border bg-[#ece8de]/30`}
       id="connectos"
     >
-      <div className="max-w-[760px]">
-        <p className={eyebrow}>ConnectOS Enterprise Architecture</p>
-        <h2 className={`${hSection} mb-6 max-w-[17ch]`}>
+      <div className="w-full lg:w-3/4 max-w-5xl">
+        <p className={eyebrow}>ConnectOS Enterprise Protocol</p>
+        <h2 className={`${hSection} mb-6 w-full`}>
           Connecting enterprise software to <em>real-world collaboration.</em>
         </h2>
-        <p className="text-base leading-[1.8] text-soft max-md:text-sm">
-          Existing enterprise tools remain authoritative for operational governance, security, and
-          HR recordkeeping. CircleCross operates as a consent-based human relationship layer that
-          empowers individuals to connect meaningfully without employer surveillance.
+        <p className="text-base leading-[1.8] text-soft max-w-[65ch]">
+          Existing enterprise tools remain authoritative for security, compliance, and HR records.
+          CircleCross operates as the opt-in human relationship layer that empowers people to
+          connect meaningfully without employer surveillance.
         </p>
       </div>
 
-      <div className="mt-16 grid grid-flow-dense grid-cols-12 gap-6 max-md:gap-5">
-        {PRO_INTEGRATIONS.map((row) => {
-          const Icon = row.icon;
-          return (
-            <article
-              key={row.domain}
-              className="col-span-12 lg:col-span-6 rounded-[2rem] bg-black/5 p-1.5 ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1"
-            >
-              <div className="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-paper p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] max-md:p-6">
-                <div>
-                  <div className="flex items-center justify-between border-b border-line/70 pb-4">
-                    <span className="text-[11px] font-[600] tracking-[0.08em] text-[#343547] uppercase">
-                      {row.domain}
-                    </span>
-                    <span
-                      className={`grid size-8 place-items-center rounded-full ${row.bgAccent} ${row.accent}`}
-                    >
-                      <Icon className="size-4" aria-hidden="true" />
-                    </span>
-                  </div>
-
-                  {/* Existing Corporate Tool */}
-                  <div className="mt-5 rounded-[14px] bg-[#fdfbf8] p-4.5 ring-1 ring-black/5">
-                    <span className="text-[10px] font-[600] tracking-[0.06em] text-soft uppercase">
-                      Official Tool
-                    </span>
-                    <h3 className="mt-1 text-sm font-[600] text-ink">{row.system}</h3>
-                    <p className="mt-1.5 text-xs leading-[1.65] text-soft">{row.whatSystemDoes}</p>
-                  </div>
-
-                  {/* CircleCross ConnectOS Layer */}
-                  <div className="mt-4 rounded-[14px] border border-pro/20 bg-[#eef0f7]/75 p-4.5">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] font-[650] tracking-[0.06em] text-[#343547] uppercase">
-                        CircleCross Layer
-                      </span>
-                      <ArrowRight className="size-3 text-copper" aria-hidden="true" />
-                    </div>
-                    <h4 className="mt-1 text-sm font-[600] text-ink">{row.circleCrossLayer}</h4>
-                    <p className="mt-1.5 text-xs leading-[1.7] text-[#343547]">
-                      {row.howCircleCrossHelps}
-                    </p>
+      {/* Editorial Interactive Comparison Architecture (No Card Inception) */}
+      <div className="mt-16 grid grid-cols-12 gap-10 items-start max-lg:gap-8">
+        {/* Domain Navigation List with Crisp Hairline Dividers */}
+        <div
+          className="col-span-12 lg:col-span-5 divide-y divide-line/70 border-y border-line/70"
+          role="tablist"
+        >
+          {PRO_DOMAINS.map((domain) => {
+            const isSelected = domain.id === activeId;
+            const Icon = domain.icon;
+            return (
+              <button
+                key={domain.id}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => setActiveId(domain.id)}
+                className={`group flex w-full items-center justify-between py-6 text-left transition-all duration-300 ${
+                  isSelected ? "opacity-100" : "opacity-60 hover:opacity-90"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <span
+                    className={`grid size-9 place-items-center rounded-full transition-colors ${
+                      isSelected
+                        ? "bg-ink text-paper"
+                        : "bg-black/5 text-ink group-hover:bg-black/10"
+                    }`}
+                  >
+                    <Icon className="size-4" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h3 className="text-base font-[600] text-ink">{domain.title}</h3>
+                    <p className="text-xs text-soft">{domain.system.split(" &")[0]}</p>
                   </div>
                 </div>
+                <span
+                  className={`size-2 rounded-full transition-all ${
+                    isSelected ? "bg-copper scale-125" : "bg-transparent group-hover:bg-line"
+                  }`}
+                />
+              </button>
+            );
+          })}
+        </div>
 
-                <div className="mt-6 border-t border-line/60 pt-4 text-[11px] text-soft">
-                  <span className="font-[600] text-ink">Enterprise Value:</span> Decreased
-                  cross-functional silos, accelerated time-to-productivity, and portable employee
-                  graphs.
-                </div>
+        {/* Dynamic Protocol Stage */}
+        <div className="col-span-12 lg:col-span-7 rounded-[2rem] bg-black/5 p-1.5 ring-1 ring-black/5">
+          <div className="rounded-[calc(2rem-0.375rem)] bg-paper p-8 md:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
+            <div className="flex items-center justify-between border-b border-line/70 pb-5">
+              <span className="text-[11px] font-[650] tracking-[0.08em] text-[#343547] uppercase">
+                Enterprise Interface Protocol
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-xs text-soft font-[500]">
+                <ShieldCheck className="size-3.5 text-pro" />
+                Zero Surveillance Guarantee
+              </span>
+            </div>
+
+            {/* Corporate vs CircleCross Protocol Flow */}
+            <div className="mt-8 space-y-6">
+              {/* Corporate System */}
+              <div className="border-l-2 border-line pl-4">
+                <span className="text-[10px] font-[650] tracking-[0.06em] text-soft uppercase">
+                  Corporate Governance Infrastructure
+                </span>
+                <h4 className="mt-1 text-base font-[600] text-ink">{activeDomain.system}</h4>
+                <p className="mt-1.5 text-xs leading-[1.7] text-soft">{activeDomain.systemRole}</p>
               </div>
-            </article>
-          );
-        })}
+
+              {/* Dynamic Connection Indicator */}
+              <div className="flex items-center gap-3 pl-4 text-xs font-[600] text-copper">
+                <ArrowRight className="size-3.5 animate-pulse" />
+                <span className="text-[11px] tracking-[0.04em] uppercase">
+                  CircleCross Human Relationship Layer
+                </span>
+              </div>
+
+              {/* CircleCross Layer */}
+              <div className="border-l-2 border-pro pl-4">
+                <span className="text-[10px] font-[650] tracking-[0.06em] text-pro uppercase">
+                  Consent-Based Relationship Graph
+                </span>
+                <h4 className="mt-1 text-base font-[600] text-ink">
+                  {activeDomain.circleCrossLayer}
+                </h4>
+                <p className="mt-1.5 text-xs leading-[1.7] text-[#343547]">
+                  {activeDomain.circleCrossRole}
+                </p>
+              </div>
+            </div>
+
+            {/* Value Metric Bar */}
+            <div className="mt-8 border-t border-line/70 pt-5 text-xs leading-[1.7] text-soft">
+              <span className="font-[650] text-ink">Enterprise Value: </span>
+              {activeDomain.enterpriseValue}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

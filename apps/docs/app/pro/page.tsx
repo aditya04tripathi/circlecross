@@ -2,7 +2,6 @@ import { JsonLd } from "../../components/json-ld";
 import { MarketingShell } from "../../components/marketing-shell";
 import { ProConnectOsGrid } from "../../components/pro/pro-connect-os-grid";
 import { ProCta } from "../../components/pro/pro-cta";
-import { ProFeatureCatalogue } from "../../components/pro/pro-feature-catalogue";
 import { ProHero } from "../../components/pro/pro-hero";
 import { ProInstitutionalTrust } from "../../components/pro/pro-institutional-trust";
 import { ProLifespanSection } from "../../components/pro/pro-lifespan-section";
@@ -20,7 +19,6 @@ export default function ProPage() {
         <ProHero />
         <ProConnectOsGrid />
         <ProSignatureProgrammes />
-        <ProFeatureCatalogue />
         <ProInstitutionalTrust />
         <ProLifespanSection />
         <ProCta />

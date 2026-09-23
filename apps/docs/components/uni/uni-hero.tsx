@@ -5,41 +5,37 @@ import { hHero, pageInset } from "../styles";
 import { Arrow } from "../ui";
 import { UniWorld } from "./scene/uni-world";
 
-const PILLARS = [
+const HORIZON_POINTS = [
   {
     icon: Compass,
     title: "First 50 Journey",
-    desc: "A 50-day onboarding arc from pre-arrival to Week 7, turning O-Week encounters into lasting academic circles.",
+    caption: "Pre-arrival through Week 7",
     accent: "text-olive",
-    bgAccent: "bg-olive/15",
   },
   {
     icon: QrCode,
-    title: "CrossPoints & Quests",
-    desc: "Physical QR checkpoints at campus hubs and libraries unlocking shared lore, study puzzles, and companion discovery.",
+    title: "CrossPoints",
+    caption: "Physical QR campus landmark trails",
     accent: "text-copper",
-    bgAccent: "bg-copper/15",
   },
   {
     icon: Users,
-    title: "Unit Circles & PASS",
-    desc: "Opt-in peer communities, study matching by habits, and companions for official peer-assisted study sessions.",
+    title: "Unit Circles",
+    caption: "Opt-in peer study & PASS companions",
     accent: "text-olive",
-    bgAccent: "bg-olive/15",
   },
   {
     icon: Sparkles,
-    title: "Skill Circle & Swaps",
-    desc: "Short-course cohorts for RSA, barista, and first aid certifications, plus structured peer-to-peer skill exchanges.",
+    title: "Skill Circles",
+    caption: "Certified cohorts & peer skill swaps",
     accent: "text-copper",
-    bgAccent: "bg-copper/15",
   },
 ];
 
 export function UniHero() {
   return (
     <section
-      className={`${pageInset} relative isolate overflow-hidden pt-[145px] pb-24 max-md:pt-[115px] max-md:pb-16`}
+      className={`${pageInset} relative isolate overflow-hidden pt-[145px] pb-20 max-md:pt-[115px] max-md:pb-14`}
       id="hero"
     >
       {/* 3D Campus Constellation Experience */}
@@ -86,29 +82,22 @@ export function UniHero() {
         </a>
       </div>
 
-      {/* Double-Bezel Hardware Enclosure Pillar Grid */}
-      <div className="relative z-[2] mt-16 grid grid-cols-4 gap-4 border-t border-line/80 pt-12 max-[1100px]:grid-cols-2 max-md:grid-cols-1">
-        {PILLARS.map((p) => {
-          const Icon = p.icon;
+      {/* Card-Free Editorial Horizon Strip */}
+      <div className="relative z-[2] mt-16 grid grid-cols-4 gap-8 border-t border-line/80 pt-10 max-[1100px]:grid-cols-2 max-md:grid-cols-1 max-md:gap-6">
+        {HORIZON_POINTS.map((item) => {
+          const Icon = item.icon;
           return (
-            <div
-              key={p.title}
-              className="rounded-[1.75rem] bg-black/5 p-1.5 ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1"
-            >
-              <div className="flex h-full flex-col justify-between rounded-[calc(1.75rem-0.375rem)] bg-paper/90 p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`grid size-8 place-items-center rounded-full ${p.bgAccent} ${p.accent}`}
-                    >
-                      <Icon className="size-4" aria-hidden="true" />
-                    </span>
-                    <h2 className="text-xs font-[600] tracking-[0.06em] text-ink uppercase">
-                      {p.title}
-                    </h2>
-                  </div>
-                  <p className="mt-3 text-xs leading-[1.7] text-soft">{p.desc}</p>
-                </div>
+            <div key={item.title} className="flex items-start gap-3.5">
+              <span
+                className={`mt-0.5 grid size-7 place-items-center rounded-full bg-black/5 ${item.accent}`}
+              >
+                <Icon className="size-3.5" aria-hidden="true" />
+              </span>
+              <div>
+                <h2 className="text-xs font-[650] tracking-[0.04em] text-ink uppercase">
+                  {item.title}
+                </h2>
+                <p className="mt-1 text-xs text-soft">{item.caption}</p>
               </div>
             </div>
           );
