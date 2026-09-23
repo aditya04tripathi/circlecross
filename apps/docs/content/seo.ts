@@ -98,13 +98,23 @@ export const seoPages: Record<IndexablePath, SeoPage> = {
   },
   "/pro": {
     path: "/pro",
-    title: "Pro",
+    title: "Pro · ConnectOS",
     description:
-      "Go beyond the introduction. Meet thoughtful people, exchange ideas and build professional relationships with room to grow.",
-    keywords: ["CircleCross Pro", "professional network", "collaboration", "workplaces"],
+      "The relationship layer for professional life. Connects workplace onboarding, CrossPoints, cross-team lunches, industry associations, and lifelong professional ties.",
+    keywords: [
+      "CircleCross Pro",
+      "ConnectOS",
+      "professional relationships",
+      "First 90",
+      "CrossPoints",
+      "hybrid workplace",
+      "cross-team collaboration",
+      "professional associations",
+      "mentorship",
+    ],
     jsonLdType: "WebPage",
-    ogTitle: "CircleCross Pro",
-    ogDescription: "Good work starts with people. A new kind of network.",
+    ogTitle: "CircleCross Pro · ConnectOS",
+    ogDescription: "The relationship layer for professional life. Grounded in trusted context.",
   },
   "/privacy": {
     path: "/privacy",

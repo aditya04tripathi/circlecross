@@ -1,13 +1,13 @@
 "use client";
 
-import { BookOpen, Coffee, Compass, GraduationCap, MapPin, QrCode, Sparkles } from "lucide-react";
+import { Award, Briefcase, Coffee, Compass, GraduationCap, MapPin, QrCode } from "lucide-react";
 import { useState } from "react";
 import { eyebrow, hSection, hSubsection, pageInset } from "../styles";
 
-type ProgrammeKey = "first50" | "crosspoints" | "study" | "skills" | "encounters" | "alumni";
+type ProProgrammeKey = "first90" | "crosspoints" | "coffee" | "lunch" | "crosslab" | "bridge";
 
-const PROGRAMMES: Array<{
-  key: ProgrammeKey;
+const PRO_PROGRAMMES: Array<{
+  key: ProProgrammeKey;
   number: string;
   name: string;
   tagline: string;
@@ -16,96 +16,96 @@ const PROGRAMMES: Array<{
   accent: string;
 }> = [
   {
-    key: "first50",
+    key: "first90",
     number: "01",
-    name: "CircleCross First 50",
-    tagline: "Your first 50 days. Your first real connections.",
+    name: "First 90 Pro",
+    tagline: "Your first 90 days. Your cross-functional network.",
     description:
-      "A university-supported onboarding journey from pre-arrival through the first seven weeks. Extends orientation far beyond O-Week into lasting academic and social belonging.",
+      "A structured enterprise onboarding journey from day one through the crucial first quarter. Bridges new hires across departmental silos into organic peer cohorts.",
     icon: Compass,
-    accent: "text-olive",
+    accent: "text-pro",
   },
   {
     key: "crosspoints",
     number: "02",
-    name: "CrossPoints & CrossQuest",
-    tagline: "Discover a place. Unlock an experience. Cross paths with someone new.",
+    name: "Pro CrossPoints",
+    tagline: "Scan in space. Unlock context. Cross paths with colleagues.",
     description:
-      "Approved physical QR checkpoints at campus landmarks (Campus Centre, Libraries, Faculty Hubs) turning physical locations into interactive stories, team challenges, and service referrals.",
+      "Physical QR checkpoints situated in headquarters receptions, collaboration floors, and event venues. Unlocks team stories, project briefs, and coffee companions.",
     icon: QrCode,
     accent: "text-copper",
   },
   {
-    key: "study",
+    key: "coffee",
     number: "03",
-    name: "Unit Circles & Study Match",
-    tagline: "Study with people who get your units.",
+    name: "CrossCoffee & CrossWalk",
+    tagline: "Low-pressure 1:1 conversations outside the conference room.",
     description:
-      "Opt-in peer communities for degrees, majors, and specific units. Find study partners based on study habits, host spontaneous Study Now sessions, and discover companions for official PASS sessions.",
-    icon: BookOpen,
-    accent: "text-olive",
+      "Low-friction coffee catch-ups and 20-minute walking 1:1s between meetings, breaking down hierarchical barriers without rigid calendar friction.",
+    icon: Coffee,
+    accent: "text-pro",
   },
   {
-    key: "skills",
+    key: "lunch",
     number: "04",
-    name: "Skill Circle & SkillSwap",
-    tagline: "Learn something useful. Meet people doing the same.",
+    name: "Lunch Across Teams",
+    tagline: "Dine with colleagues outside your reporting chain.",
     description:
-      "Form cohorts around practical short courses (RSA, barista, first aid, public speaking, code), plus structured peer-to-peer trades of non-regulated skills.",
-    icon: Sparkles,
+      "Curated small-group lunch pods (3-4 people) matching individuals across Engineering, Design, Sales, and Ops based on shared interests or career questions.",
+    icon: MapPin,
     accent: "text-copper",
   },
   {
-    key: "encounters",
+    key: "crosslab",
     number: "05",
-    name: "Second Hello & 30-Min Cross",
-    tagline: "Low-pressure reconnection that fits real campus routines.",
+    name: "CrossLab Pro Challenges",
+    tagline: "Solve interdisciplinary innovation challenges together.",
     description:
-      "Facilitates follow-up coffee after an initial event, short 30-minute collaborative activities between classes, commute circles, and quiet social spaces.",
-    icon: Coffee,
-    accent: "text-olive",
+      "Internal hackathons and cross-functional problem sprints where cross-departmental teams solve strategic business challenges in timeboxed sessions.",
+    icon: Award,
+    accent: "text-pro",
   },
   {
-    key: "alumni",
+    key: "bridge",
     number: "06",
-    name: "University Bridge & Alumni",
-    tagline: "Preserving student relationships into lifelong professional ties.",
+    name: "Uni-to-Pro Bridge",
+    tagline: "Bringing student networks and verified degrees into industry life.",
     description:
-      "Student circles transition into Graduation Circles. Consenting graduates carry chosen relationships and verified credentials smoothly into CircleCross Pro.",
+      "Graduates preserve university relationship circles and degree credentials into CircleCross Pro, establishing immediate credibility in target sectors.",
     icon: GraduationCap,
     accent: "text-copper",
   },
 ];
 
-export function SignatureProgrammes() {
-  const [selected, setSelected] = useState<ProgrammeKey>("first50");
-  const fallback = PROGRAMMES[0] ?? {
-    key: "first50" as const,
+export function ProSignatureProgrammes() {
+  const [selected, setSelected] = useState<ProProgrammeKey>("first90");
+  const fallback = PRO_PROGRAMMES[0] ?? {
+    key: "first90" as const,
     number: "01",
-    name: "CircleCross First 50",
-    tagline: "Your first 50 days.",
+    name: "First 90 Pro",
+    tagline: "Your first 90 days.",
     description: "Onboarding journey.",
     icon: Compass,
-    accent: "text-olive",
+    accent: "text-pro",
   };
-  const activeProgramme = PROGRAMMES.find((p) => p.key === selected) ?? fallback;
+  const activeProgramme = PRO_PROGRAMMES.find((p) => p.key === selected) ?? fallback;
 
   return (
     <section className={`${pageInset} py-28 md:py-36 border-t border-border`} id="programmes">
       <div className="max-w-[760px]">
-        <p className={eyebrow}>Signature Initiatives</p>
+        <p className={eyebrow}>Signature Enterprise Initiatives</p>
         <h2 className={`${hSection} mb-6 max-w-[17ch]`}>
-          Six programmes engineered for <em>meaningful connection.</em>
+          Six initiatives engineered for <em>authentic collaboration.</em>
         </h2>
         <p className="text-base leading-[1.8] text-soft max-md:text-sm">
-          Designed specifically for Australian and global higher education. Each programme works
-          with existing academic timetables, campus precincts, and faculty communities.
+          Designed for modern enterprises, industry associations, and innovation precincts. Each
+          initiative works with flexible work routines, multi-office campuses, and hybrid teams.
         </p>
       </div>
 
       {/* Programme Tabs with Tactile Hardware Styling */}
       <div className="mt-14 flex flex-wrap gap-2.5 border-b border-line/80 pb-5" role="tablist">
-        {PROGRAMMES.map((prog) => {
+        {PRO_PROGRAMMES.map((prog) => {
           const isActive = prog.key === selected;
           const Icon = prog.icon;
           return (
@@ -136,8 +136,8 @@ export function SignatureProgrammes() {
         <div className="rounded-[calc(2.25rem-0.375rem)] bg-paper p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] max-md:p-6">
           <div className="flex items-center justify-between border-b border-line/70 pb-6 max-md:flex-col max-md:items-start max-md:gap-3">
             <div>
-              <span className="text-[11px] font-[650] tracking-[0.08em] text-[#343a29] uppercase">
-                Architecture Pillar {activeProgramme.number}
+              <span className="text-[11px] font-[650] tracking-[0.08em] text-[#343547] uppercase">
+                Initiative Architecture {activeProgramme.number}
               </span>
               <h3 className={`${hSubsection} mt-1 text-ink`}>{activeProgramme.name}</h3>
             </div>
@@ -151,42 +151,42 @@ export function SignatureProgrammes() {
           </p>
 
           {/* Dynamic Detailed Content Based on Active Programme */}
-          {selected === "first50" && (
+          {selected === "first90" && (
             <div className="mt-10 border-t border-line/70 pt-8">
               <h4 className="text-xs font-[650] tracking-[0.08em] text-ink uppercase">
-                The 50-Day Transition Journey
+                The 90-Day Enterprise Transition Arc
               </h4>
               <div className="mt-6 grid grid-cols-5 gap-3 max-[1100px]:grid-cols-2 max-md:grid-cols-1">
                 {[
                   {
-                    stage: "Stage 01",
+                    stage: "Days 1–14",
                     color: "text-copper",
-                    title: "Before Arrival",
-                    desc: "Academic identity, course interests, and pre-arrival orientation recommendations.",
+                    title: "Orientation",
+                    desc: "Welcome buddy matching, cross-functional onboarding cohorts, and team introductions.",
                   },
                   {
-                    stage: "Stage 02",
-                    color: "text-olive",
-                    title: "O-Week",
-                    desc: "CrossPoints check-ins, CrossQuest team trails, official events & companions.",
+                    stage: "Days 15–30",
+                    color: "text-pro",
+                    title: "First Encounters",
+                    desc: "Pro CrossPoints discovery, casual coffee pairings, and informal mentor introductions.",
                   },
                   {
-                    stage: "Stage 03",
+                    stage: "Days 31–60",
                     color: "text-copper",
-                    title: "Weeks 1–2",
-                    desc: "Unit Circles, Skill Circle cohorts, clubs & PASS study group discovery.",
+                    title: "Deepening",
+                    desc: "Lunch Across Teams participation, interest circle discovery, and shared project exploration.",
                   },
                   {
-                    stage: "Stage 04",
-                    color: "text-olive",
-                    title: "Weeks 3–5",
-                    desc: "Second Hello re-connections, SkillSwap sessions, and project teams.",
+                    stage: "Days 61–75",
+                    color: "text-pro",
+                    title: "Integration",
+                    desc: "CrossLab challenge contribution, knowledge-sharing talks, and peer guidance.",
                   },
                   {
-                    stage: "Stage 05",
+                    stage: "Days 76–90",
                     color: "text-copper",
-                    title: "Weeks 6–7",
-                    desc: "Fresh Start pathways, continuing community rituals, and voluntary feedback.",
+                    title: "Autonomy",
+                    desc: "Full peer network established; reciprocal mentoring and community leadership active.",
                   },
                 ].map((s) => (
                   <div
@@ -209,37 +209,37 @@ export function SignatureProgrammes() {
           {selected === "crosspoints" && (
             <div className="mt-10 border-t border-line/70 pt-8">
               <h4 className="text-xs font-[650] tracking-[0.08em] text-ink uppercase">
-                Four Core CrossPoint Checkpoint Archetypes
+                Four Core Enterprise Checkpoint Archetypes
               </h4>
               <div className="mt-6 grid grid-cols-2 gap-4 max-md:grid-cols-1">
                 {[
                   {
-                    icon: MapPin,
-                    accent: "text-olive",
-                    bg: "bg-olive/15",
-                    title: "The Social Cross (Campus Centre)",
-                    desc: "Introduces student association services, active clubs, volunteer groups, and open communal study tables.",
-                  },
-                  {
-                    icon: BookOpen,
-                    accent: "text-copper",
-                    bg: "bg-copper/15",
-                    title: "The Knowledge Cross (Libraries)",
-                    desc: "Highlights academic research collections, peer consultation hours, and collaborative discovery puzzles.",
-                  },
-                  {
-                    icon: Sparkles,
-                    accent: "text-olive",
-                    bg: "bg-olive/15",
-                    title: "The Discovery Cross (Faculty & Makerspaces)",
-                    desc: "Features cutting-edge faculty research, lab facilities, and interdisciplinary CrossLab challenges.",
+                    icon: Briefcase,
+                    accent: "text-pro",
+                    bg: "bg-pro/15",
+                    title: "The Reception & Hub Cross",
+                    desc: "Welcomes visitors, contractor cohorts, and roaming employees with verified WiFi access and local workplace guides.",
                   },
                   {
                     icon: Coffee,
                     accent: "text-copper",
                     bg: "bg-copper/15",
-                    title: "The Food Cross (Campus Dining)",
-                    desc: "Hosts casual lunch circles, coffee meetups, and verified merchant offers approved by the university.",
+                    title: "The Cafe & Lounge Cross",
+                    desc: "Facilitates casual 1:1 catchups, impromptu coffee chats, and spontaneous team meetups.",
+                  },
+                  {
+                    icon: Award,
+                    accent: "text-pro",
+                    bg: "bg-pro/15",
+                    title: "The Innovation Lab Cross",
+                    desc: "Showcases active internal experiments, open RFCs, and collaborative project needs across business units.",
+                  },
+                  {
+                    icon: MapPin,
+                    accent: "text-copper",
+                    bg: "bg-copper/15",
+                    title: "The Summit & Event Cross",
+                    desc: "Transforms offsites, town halls, and industry summits into dynamic networking zones.",
                   },
                 ].map((item) => {
                   const Icon = item.icon;
@@ -266,24 +266,24 @@ export function SignatureProgrammes() {
             </div>
           )}
 
-          {selected === "study" && (
+          {selected === "coffee" && (
             <div className="mt-10 border-t border-line/70 pt-8">
               <h4 className="text-xs font-[650] tracking-[0.08em] text-ink uppercase">
-                Academic Collaboration Architecture
+                Low-Friction 1:1 Connection Formats
               </h4>
               <div className="mt-6 grid grid-cols-3 gap-4 max-md:grid-cols-1">
                 {[
                   {
-                    title: "CourseMates & Unit Circles",
-                    desc: "Opt-in communities for specific subjects that continue across semesters without cluttering LMS teaching spaces.",
+                    title: "CrossCoffee 1:1",
+                    desc: "20-minute, mutual opt-in coffee pairings around shared professional interests or problem solving.",
                   },
                   {
-                    title: "Study Match & Study Now",
-                    desc: "Matches compatible peers by study goals, schedule, and preferred study silence, with spontaneous Study Now beacons in libraries.",
+                    title: "CrossWalk Meetings",
+                    desc: "Walking conversations in nearby parks or precincts, replacing sedentary screen-share meetings.",
                   },
                   {
-                    title: "PASS Companion Discovery",
-                    desc: "Students discover classmates voluntarily attending official PASS sessions without duplicating facilitators or curriculum.",
+                    title: "Second Hello Follow-Up",
+                    desc: "Effortless, low-pressure reconnection loops after an all-hands, conference, or committee presentation.",
                   },
                 ].map((item) => (
                   <div
@@ -300,35 +300,33 @@ export function SignatureProgrammes() {
             </div>
           )}
 
-          {selected === "skills" && (
+          {selected === "lunch" && (
             <div className="mt-10 border-t border-line/70 pt-8">
               <h4 className="text-xs font-[650] tracking-[0.08em] text-ink uppercase">
-                Skill Building & Peer Exchange
+                Cross-Departmental Dining Architecture
               </h4>
               <div className="mt-6 grid grid-cols-2 gap-4 max-md:grid-cols-1">
                 <div className="rounded-[1.25rem] bg-black/[0.03] p-1 ring-1 ring-black/5">
                   <div className="h-full rounded-[calc(1.25rem-0.25rem)] bg-[#fdfbf8] p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
                     <span className="text-[10px] font-[650] text-copper uppercase">
-                      Accredited Short Courses
+                      Curated Small-Group Pods
                     </span>
-                    <h5 className="mt-1 text-sm font-[600] text-ink">Skill Circle</h5>
+                    <h5 className="mt-1 text-sm font-[600] text-ink">Lunch Across Teams</h5>
                     <p className="mt-2 text-xs leading-[1.7] text-soft">
-                      Aggregates authorised training for RSA, Barista, First Aid, and Food Safety.
-                      Official enrolment stays with providers while CircleCross forms practice
-                      cohorts.
+                      Matches 3-4 colleagues from unrelated departments for casual lunches,
+                      eliminating clique behavior and cultivating cross-functional empathy.
                     </p>
                   </div>
                 </div>
                 <div className="rounded-[1.25rem] bg-black/[0.03] p-1 ring-1 ring-black/5">
                   <div className="h-full rounded-[calc(1.25rem-0.25rem)] bg-[#fdfbf8] p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
-                    <span className="text-[10px] font-[650] text-olive uppercase">
-                      Peer-to-Peer Trades
+                    <span className="text-[10px] font-[650] text-pro uppercase">
+                      Open Table Topics
                     </span>
-                    <h5 className="mt-1 text-sm font-[600] text-ink">SkillSwap</h5>
+                    <h5 className="mt-1 text-sm font-[600] text-ink">Topic Dining Tables</h5>
                     <p className="mt-2 text-xs leading-[1.7] text-soft">
-                      Students trade non-regulated skills in structured mutual sessions: Photography
-                      for Python, Public Speaking for Graphic Design, or Language Practice for
-                      Excel.
+                      Weekly informal lunch tables hosted on designated themes (e.g. AI Workflow
+                      Experiments, Sustainable Practices, or Working Parent Circles).
                     </p>
                   </div>
                 </div>
@@ -336,24 +334,24 @@ export function SignatureProgrammes() {
             </div>
           )}
 
-          {selected === "encounters" && (
+          {selected === "crosslab" && (
             <div className="mt-10 border-t border-line/70 pt-8">
               <h4 className="text-xs font-[650] tracking-[0.08em] text-ink uppercase">
-                Everyday Campus Connection
+                Collaborative Problem-Solving Frameworks
               </h4>
               <div className="mt-6 grid grid-cols-3 gap-4 max-md:grid-cols-1">
                 {[
                   {
-                    title: "Second Hello",
-                    desc: "Structured, low-pressure follow-up mechanisms after an initial orientation, club, or faculty meeting.",
+                    title: "Interdisciplinary Sprints",
+                    desc: "Timeboxed 2-day challenges where Product, Design, Sales, and Ops tackle thorny strategic customer roadblocks.",
                   },
                   {
-                    title: "The 30-Minute Cross",
-                    desc: "Short, repeatable activities (campus photography walks, quick logic puzzles) calibrated for timetable breaks.",
+                    title: "Skill Exchange Clinics",
+                    desc: "Peer-led masterclasses where colleagues teach practical tools (e.g. Figma prototyping, SQL basics, storytelling).",
                   },
                   {
-                    title: "Fresh Start",
-                    desc: "Year-round social re-onboarding for transfers, exchange students, and returning cohorts who missed O-Week.",
+                    title: "Open Mentorship Office Hours",
+                    desc: "Senior leaders host open-door collaborative mentoring hours without rigid formal reporting relationships.",
                   },
                 ].map((item) => (
                   <div
@@ -370,27 +368,31 @@ export function SignatureProgrammes() {
             </div>
           )}
 
-          {selected === "alumni" && (
+          {selected === "bridge" && (
             <div className="mt-10 border-t border-line/70 pt-8">
               <h4 className="text-xs font-[650] tracking-[0.08em] text-ink uppercase">
-                Lifelong Connection Architecture
+                Lifelong Career Capital Architecture
               </h4>
               <div className="mt-6 grid grid-cols-2 gap-4 max-md:grid-cols-1">
                 <div className="rounded-[1.25rem] bg-black/[0.03] p-1 ring-1 ring-black/5">
                   <div className="h-full rounded-[calc(1.25rem-0.25rem)] bg-[#fdfbf8] p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
-                    <h5 className="text-sm font-[600] text-ink">Graduation Circles</h5>
+                    <h5 className="text-sm font-[600] text-ink">
+                      University-to-Industry Continuity
+                    </h5>
                     <p className="mt-2 text-xs leading-[1.7] text-soft">
-                      Allows student-era friendship and project circles to persist into alumni life
-                      without being severed when university email access expires.
+                      Preserves verified student cohorts, honors research ties, and project
+                      collaborators into corporate networks without restarting from zero.
                     </p>
                   </div>
                 </div>
                 <div className="rounded-[1.25rem] bg-black/[0.03] p-1 ring-1 ring-black/5">
                   <div className="h-full rounded-[calc(1.25rem-0.25rem)] bg-[#fdfbf8] p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
-                    <h5 className="text-sm font-[600] text-ink">University Bridge to Pro</h5>
+                    <h5 className="text-sm font-[600] text-ink">
+                      Independent Professional Sovereignty
+                    </h5>
                     <p className="mt-2 text-xs leading-[1.7] text-soft">
-                      Selective, user-governed transfer of verified credentials and trusted
-                      relationships directly into CircleCross Pro.
+                      Your graph remains your personal intellectual capital across company moves.
+                      Employers provide corporate context, but you own your relationships forever.
                     </p>
                   </div>
                 </div>

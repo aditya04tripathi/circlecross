@@ -6,12 +6,12 @@ import { writeWorldPreference } from "../../lib/world-preference";
 import { eyebrow, hSection, pageInset } from "../styles";
 import { Arrow } from "../ui";
 
-export function UniCta() {
+export function ProCta() {
   const router = useRouter();
   const [status, setStatus] = useState<"idle" | "saved" | "unavailable">("idle");
 
-  const chooseUni = async () => {
-    const ok = await writeWorldPreference("University");
+  const choosePro = async () => {
+    const ok = await writeWorldPreference("Professional");
     if (!ok) {
       setStatus("unavailable");
       return;
@@ -27,11 +27,11 @@ export function UniCta() {
     >
       <div className="flex items-end justify-between gap-16 max-md:flex-col max-md:items-start max-md:gap-10">
         <div className="min-w-0 max-w-[44ch]">
-          <p className={`${eyebrow} text-start-cream font-[600]`}>Begin your campus journey</p>
-          <h2 className={`${hSection} mb-5 text-start-cream`}>Choose CircleCross Uni.</h2>
+          <p className={`${eyebrow} text-start-cream font-[600]`}>Empower your career network</p>
+          <h2 className={`${hSection} mb-5 text-start-cream`}>Choose CircleCross Pro.</h2>
           <p className="text-sm leading-[1.8] text-[#f6e1d3]">
-            Save your world preference on this device to orient your experience around campus life,
-            academic cohorts, and real-world circles.
+            Save your world preference on this device to orient your experience around industry
+            cohorts, executive mentoring, and cross-functional circles.
           </p>
         </div>
 
@@ -39,10 +39,10 @@ export function UniCta() {
           {/* Button-in-button nested architecture */}
           <button
             type="button"
-            onClick={chooseUni}
+            onClick={choosePro}
             className="group flex items-center justify-between gap-4 rounded-full bg-paper px-6 py-4 text-xs font-[600] tracking-[0.04em] text-ink shadow-[0_4px_24px_rgba(0,0,0,0.2)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#fffdf9] active:scale-[0.98]"
           >
-            <span>Set Uni as My World Preference</span>
+            <span>Set Pro as My World Preference</span>
             <span className="flex size-7 items-center justify-center rounded-full bg-ink/10 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[0.5px] group-hover:scale-105">
               <Arrow />
             </span>
@@ -53,19 +53,19 @@ export function UniCta() {
             role="status"
           >
             {status === "saved"
-              ? "Your preference for CircleCross Uni is saved. Heading to your circle on the homepage..."
+              ? "Your preference for CircleCross Pro is saved. Heading to your circle on the homepage..."
               : status === "unavailable"
                 ? "Your browser could not save this preference locally, but you can explore freely."
                 : null}
           </p>
 
           <div className="mt-5 border-t border-white/20 pt-4">
-            <span className="text-xs text-white/80">Also building your career? </span>
+            <span className="text-xs text-white/80">Exploring campus life? </span>
             <a
-              href="/pro"
+              href="/uni"
               className="inline-flex items-center gap-1.5 text-xs font-[600] text-white hover:underline"
             >
-              <span>Explore CircleCross Pro</span>
+              <span>Explore CircleCross University</span>
               <Arrow diagonal />
             </a>
           </div>

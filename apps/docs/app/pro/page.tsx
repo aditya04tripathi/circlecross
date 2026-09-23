@@ -1,10 +1,14 @@
 import { JsonLd } from "../../components/json-ld";
 import { MarketingShell } from "../../components/marketing-shell";
-import { ProductPageView } from "../../components/product-page";
+import { ProConnectOsGrid } from "../../components/pro/pro-connect-os-grid";
+import { ProCta } from "../../components/pro/pro-cta";
+import { ProFeatureCatalogue } from "../../components/pro/pro-feature-catalogue";
+import { ProHero } from "../../components/pro/pro-hero";
+import { ProInstitutionalTrust } from "../../components/pro/pro-institutional-trust";
+import { ProLifespanSection } from "../../components/pro/pro-lifespan-section";
+import { ProSignatureProgrammes } from "../../components/pro/pro-signature-programmes";
+import { SiteFooter } from "../../components/site-footer";
 import { generateSeo, getJsonLd } from "../../content/seo";
-import { getWorld } from "../../content/worlds";
-
-const world = getWorld("pro");
 
 export const metadata = generateSeo("/pro");
 
@@ -12,7 +16,16 @@ export default function ProPage() {
   return (
     <MarketingShell>
       <JsonLd data={getJsonLd("/pro")} />
-      <ProductPageView world={world} />
+      <main id="main">
+        <ProHero />
+        <ProConnectOsGrid />
+        <ProSignatureProgrammes />
+        <ProFeatureCatalogue />
+        <ProInstitutionalTrust />
+        <ProLifespanSection />
+        <ProCta />
+      </main>
+      <SiteFooter />
     </MarketingShell>
   );
 }

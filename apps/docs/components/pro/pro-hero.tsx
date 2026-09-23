@@ -1,66 +1,67 @@
 "use client";
 
-import { Compass, QrCode, Sparkles, Users } from "lucide-react";
+import { Coffee, Compass, GraduationCap, QrCode } from "lucide-react";
 import { hHero, pageInset } from "../styles";
 import { Arrow } from "../ui";
-import { UniWorld } from "./scene/uni-world";
+import { ProWorld } from "./scene/pro-world";
 
 const PILLARS = [
   {
     icon: Compass,
-    title: "First 50 Journey",
-    desc: "A 50-day onboarding arc from pre-arrival to Week 7, turning O-Week encounters into lasting academic circles.",
-    accent: "text-olive",
-    bgAccent: "bg-olive/15",
+    title: "First 90 Pro",
+    desc: "A 90-day connection journey for new starters and team transitions, bridging cross-functional silos across departments.",
+    accent: "text-pro",
+    bgAccent: "bg-pro/15",
   },
   {
     icon: QrCode,
-    title: "CrossPoints & Quests",
-    desc: "Physical QR checkpoints at campus hubs and libraries unlocking shared lore, study puzzles, and companion discovery.",
+    title: "Pro CrossPoints",
+    desc: "QR checkpoints in reception, innovation hubs, and event zones revealing opt-in activities without employee tracking.",
     accent: "text-copper",
     bgAccent: "bg-copper/15",
   },
   {
-    icon: Users,
-    title: "Unit Circles & PASS",
-    desc: "Opt-in peer communities, study matching by habits, and companions for official peer-assisted study sessions.",
-    accent: "text-olive",
-    bgAccent: "bg-olive/15",
+    icon: Coffee,
+    title: "CrossCoffee & Lunch",
+    desc: "Curated small-group lunches and walking 1:1 conversations between meetings to dismantle corporate silos.",
+    accent: "text-pro",
+    bgAccent: "bg-pro/15",
   },
   {
-    icon: Sparkles,
-    title: "Skill Circle & Swaps",
-    desc: "Short-course cohorts for RSA, barista, and first aid certifications, plus structured peer-to-peer skill exchanges.",
+    icon: GraduationCap,
+    title: "Uni-to-Pro Bridge",
+    desc: "Seamless transition for graduates preserving student circles into verified alumni and enduring industry networks.",
     accent: "text-copper",
     bgAccent: "bg-copper/15",
   },
 ];
 
-export function UniHero() {
+export function ProHero() {
   return (
     <section
       className={`${pageInset} relative isolate overflow-hidden pt-[145px] pb-24 max-md:pt-[115px] max-md:pb-16`}
       id="hero"
     >
-      {/* 3D Campus Constellation Experience */}
-      <UniWorld />
+      {/* 3D Executive Synapse Lattice */}
+      <ProWorld />
 
       {/* Cinematic 2-Line Heading */}
       <h1
         className={`${hHero} relative z-[2] mt-8 mb-6 max-w-[15ch] min-[1400px]:max-w-[17ch] text-[clamp(44px,6.2vw,96px)] leading-[1.08] tracking-[-0.04em]`}
       >
-        The relationship and <em>participation layer</em> for university life.
+        The relationship layer for <em>professional life.</em>
       </h1>
 
-      <p className="relative z-[2] max-w-[34ch] text-[clamp(22px,2.6vw,36px)] leading-[1.24] tracking-[-0.035em] text-[#35392e]">
-        Students discover institutional opportunities, participate in real-world experiences, and
-        voluntarily return to participate again.
+      <p className="relative z-[2] max-w-[34ch] text-[clamp(22px,2.6vw,36px)] leading-[1.24] tracking-[-0.035em] text-[#30313f]">
+        Discover colleagues, mentors, collaborators, and opportunities through trusted context and
+        consent-based real-world experiences.
       </p>
 
       <p className="relative z-[2] mt-7 max-w-[58ch] text-base leading-[1.8] text-soft max-md:text-sm">
-        ConnectOS wraps around official university systems — from orientation and peer mentoring to
-        LMS units, PASS, campus landmarks, skills training, and alumni networks. It turns
-        institutional silos into real-world belonging without social surveillance.
+        ConnectOS wraps around official HRIS, Microsoft Teams, Slack, learning platforms, and
+        industry conferences. It connects initial introductions into lasting, voluntary
+        relationships — with the individual, not their employer, in full sovereignty over their
+        career graph.
       </p>
 
       {/* Button-in-Button Action CTAs */}

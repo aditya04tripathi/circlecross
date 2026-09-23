@@ -5,6 +5,7 @@ import { ConnectOsGrid } from "../../components/uni/connect-os-grid";
 import { FeatureCatalogue } from "../../components/uni/feature-catalogue";
 import { InstitutionalTrust } from "../../components/uni/institutional-trust";
 import { SignatureProgrammes } from "../../components/uni/signature-programmes";
+import { UniBridgeSection } from "../../components/uni/uni-bridge-section";
 import { UniCta } from "../../components/uni/uni-cta";
 import { UniHero } from "../../components/uni/uni-hero";
 import { generateSeo, getJsonLd } from "../../content/seo";
@@ -21,6 +22,7 @@ export default function UniPage() {
         <SignatureProgrammes />
         <FeatureCatalogue />
         <InstitutionalTrust />
+        <UniBridgeSection />
         <UniCta />
       </main>
       <SiteFooter />

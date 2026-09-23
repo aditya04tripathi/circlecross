@@ -11,7 +11,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useState } from "react";
-import { eyebrow, hSection, pageInset, pyDense } from "../styles";
+import { eyebrow, hSection, pageInset } from "../styles";
 
 type CategoryId = "all" | "academic" | "social" | "orientation" | "skills" | "alumni";
 
@@ -226,12 +226,12 @@ export function FeatureCatalogue() {
 
   return (
     <section
-      className={`${pageInset} ${pyDense} border-t border-border bg-[#ece8de]/30`}
+      className={`${pageInset} py-28 md:py-36 border-t border-border bg-[#ece8de]/30`}
       id="catalogue"
     >
-      <div className="max-w-[700px]">
+      <div className="max-w-[760px]">
         <p className={eyebrow}>Master Feature Catalogue</p>
-        <h2 className={`${hSection} mb-6 max-w-[16ch]`}>
+        <h2 className={`${hSection} mb-6 max-w-[17ch]`}>
           Engineered for university <em>scale and trust.</em>
         </h2>
         <p className="text-base leading-[1.8] text-soft max-md:text-sm">
@@ -241,7 +241,7 @@ export function FeatureCatalogue() {
       </div>
 
       {/* Category Pills & Search */}
-      <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">
+      <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-b border-line/80 pb-6">
         <div className="flex flex-wrap gap-2" role="tablist">
           {CATEGORIES.map((cat) => {
             const isSelected = cat.id === activeCategory;
@@ -253,9 +253,9 @@ export function FeatureCatalogue() {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-[500] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-copper ${
+                className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-[550] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-copper active:scale-[0.98] ${
                   isSelected
-                    ? "bg-ink text-paper"
+                    ? "bg-ink text-paper shadow-sm"
                     : "border border-line bg-paper text-soft hover:bg-[#e4dfd1] hover:text-ink"
                 }`}
               >
@@ -267,47 +267,49 @@ export function FeatureCatalogue() {
         </div>
 
         {/* Search Filter */}
-        <div className="relative min-w-[240px] max-md:w-full">
-          <Search className="absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-soft" />
+        <div className="relative min-w-[260px] max-md:w-full">
+          <Search className="absolute top-1/2 left-3.5 size-3.5 -translate-y-1/2 text-soft" />
           <input
             type="text"
-            placeholder="Search features..."
+            placeholder="Search capabilities..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-full border border-line bg-paper py-2 pr-4 pl-9 text-xs text-ink placeholder:text-soft focus:border-copper focus:outline-none"
+            className="w-full rounded-full border border-line bg-paper py-2.5 pr-4 pl-9.5 text-xs text-ink placeholder:text-soft focus:border-copper focus:outline-none"
           />
         </div>
       </div>
 
-      {/* Feature Grid */}
-      <div className="mt-10 grid grid-cols-3 gap-6 max-[1100px]:grid-cols-2 max-md:grid-cols-1">
+      {/* Double-Bezel Feature Grid with grid-flow-dense */}
+      <div className="mt-12 grid grid-flow-dense grid-cols-12 gap-6 max-md:gap-5">
         {filtered.map((item) => (
           <article
             key={item.id}
-            className="flex flex-col justify-between rounded-[16px] border border-line bg-paper p-6 shadow-[0_2px_12px_rgba(41,42,36,0.03)] transition-transform duration-300 hover:-translate-y-1"
+            className="col-span-12 md:col-span-6 lg:col-span-4 rounded-[1.75rem] bg-black/5 p-1.5 ring-1 ring-black/5 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1"
           >
-            <div>
-              <div className="flex items-center justify-between">
-                <span className="rounded-full bg-[#626c4d]/10 px-2.5 py-0.5 text-[10px] font-[550] text-[#373d2b] uppercase">
-                  {item.tag}
-                </span>
-                <ShieldCheck className="size-3.5 text-copper" aria-hidden="true" />
+            <div className="flex h-full flex-col justify-between rounded-[calc(1.75rem-0.375rem)] bg-paper p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
+              <div>
+                <div className="flex items-center justify-between border-b border-line/60 pb-3">
+                  <span className="rounded-full bg-olive/15 px-2.5 py-0.5 text-[10px] font-[650] text-[#343a29] uppercase">
+                    {item.tag}
+                  </span>
+                  <ShieldCheck className="size-3.5 text-copper" aria-hidden="true" />
+                </div>
+
+                <h3 className="mt-4 text-base font-[600] text-ink">{item.name}</h3>
+                <p className="mt-2 text-xs leading-[1.7] text-soft">{item.description}</p>
               </div>
 
-              <h3 className="mt-4 text-base font-[550] text-ink">{item.name}</h3>
-              <p className="mt-2 text-xs leading-[1.7] text-soft">{item.description}</p>
-            </div>
-
-            <div className="mt-6 border-t border-line/60 pt-3 text-[11px] leading-[1.6] text-[#414833]">
-              <span className="font-[600]">Integration: </span>
-              {item.integration}
+              <div className="mt-6 border-t border-line/60 pt-3 text-[11px] leading-[1.65] text-[#373d2b]">
+                <span className="font-[650]">Integration: </span>
+                {item.integration}
+              </div>
             </div>
           </article>
         ))}
       </div>
 
       {filtered.length === 0 && (
-        <div className="mt-12 text-center text-sm text-soft">
+        <div className="mt-14 text-center text-sm text-soft">
           No features matched your search criteria. Try a different search term.
         </div>
       )}
