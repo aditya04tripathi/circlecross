@@ -1,11 +1,11 @@
-export type WorldChoice = "Uni" | "Pro";
+export type WorldChoice = "University" | "Professional";
 
 export const WORLD_COOKIE = "circlecross-world";
 export const WORLD_STORAGE_KEY = "circlecross-world";
 export const WORLD_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 export const WORLD_PREFERENCE_PATH = "/api/world-preference";
 
-const VALID: WorldChoice[] = ["Uni", "Pro"];
+const VALID: WorldChoice[] = ["University", "Professional"];
 
 export function isWorldChoice(value: string): value is WorldChoice {
   return VALID.includes(value as WorldChoice);

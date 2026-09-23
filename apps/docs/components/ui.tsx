@@ -1,9 +1,9 @@
 import { Button } from "@circlecross/ui/components/button";
 import { cn } from "cn";
+import { ArrowRightIcon, ArrowUpRightIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { SiteButton } from "./site-button";
 import { buttonIcon, siteCta, siteCtaLight, textLink } from "./styles";
-import { ArrowRightIcon, ArrowUpRightIcon } from "lucide-react";
 
 export function Arrow({ diagonal = false, className }: { diagonal?: boolean; className?: string }) {
   const Icon = diagonal ? ArrowUpRightIcon : ArrowRightIcon;

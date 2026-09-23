@@ -1,8 +1,9 @@
 "use client";
 import dynamic from "next/dynamic";
-import { Component, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
+import { Component, useEffect, useRef, useState } from "react";
 import { OrbitFallback } from "./orbit-fallback";
+
 const Scene = dynamic(() => import("./orbit-scene").then((m) => m.OrbitScene), {
   ssr: false,
 });

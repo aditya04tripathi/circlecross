@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { type IndexablePath, assertSitemapPathsSubset, indexablePaths } from "../content/seo";
+import { assertSitemapPathsSubset, type IndexablePath, indexablePaths } from "../content/seo";
 
 const siteUrl = process.env.SITE_URL ?? "http://localhost:8004";
 

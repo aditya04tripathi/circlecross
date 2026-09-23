@@ -1,10 +1,13 @@
 import { JsonLd } from "../../components/json-ld";
 import { MarketingShell } from "../../components/marketing-shell";
-import { ProductPageView } from "../../components/product-page";
+import { SiteFooter } from "../../components/site-footer";
+import { ConnectOsGrid } from "../../components/uni/connect-os-grid";
+import { FeatureCatalogue } from "../../components/uni/feature-catalogue";
+import { InstitutionalTrust } from "../../components/uni/institutional-trust";
+import { SignatureProgrammes } from "../../components/uni/signature-programmes";
+import { UniCta } from "../../components/uni/uni-cta";
+import { UniHero } from "../../components/uni/uni-hero";
 import { generateSeo, getJsonLd } from "../../content/seo";
-import { getWorld } from "../../content/worlds";
-
-const world = getWorld("uni");
 
 export const metadata = generateSeo("/uni");
 
@@ -12,7 +15,15 @@ export default function UniPage() {
   return (
     <MarketingShell>
       <JsonLd data={getJsonLd("/uni")} />
-      <ProductPageView world={world} />
+      <main id="main">
+        <UniHero />
+        <ConnectOsGrid />
+        <SignatureProgrammes />
+        <FeatureCatalogue />
+        <InstitutionalTrust />
+        <UniCta />
+      </main>
+      <SiteFooter />
     </MarketingShell>
   );
 }

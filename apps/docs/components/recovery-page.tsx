@@ -1,8 +1,8 @@
 import {
+  type RecoveryCopy,
   recoveryCopy,
   recoveryHomeLabel,
   recoveryWorldLinks,
-  type RecoveryCopy,
 } from "../content/recovery";
 import { MarketingShell } from "./marketing-shell";
 import { SiteButton } from "./site-button";

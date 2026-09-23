@@ -5,17 +5,17 @@ import { cn } from "cn";
 import { useEffect, useEffectEvent, useId, useState } from "react";
 import {
   readWorldPreference,
-  writeWorldPreference,
   type WorldChoice,
+  writeWorldPreference,
 } from "../lib/world-preference";
 import { Logo } from "./logo";
 import { eyebrow, pageInset } from "./styles";
 import { WorldRows } from "./world-rows";
 
-const VALID: WorldChoice[] = ["Uni", "Pro"];
+const VALID: WorldChoice[] = ["University", "Professional"];
 
 export function Start() {
-  const [choice, setChoice] = useState<WorldChoice>("Uni");
+  const [choice, setChoice] = useState<WorldChoice>("University");
   const [saved, setSaved] = useState<"idle" | "saved" | "unavailable">("idle");
   const labelId = useId();
 

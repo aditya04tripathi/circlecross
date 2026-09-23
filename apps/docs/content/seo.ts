@@ -78,13 +78,23 @@ export const seoPages: Record<IndexablePath, SeoPage> = {
   },
   "/uni": {
     path: "/uni",
-    title: "Uni",
+    title: "Uni · ConnectOS",
     description:
-      "From the first lecture to the last night of term. Find friends, study partners, clubs and collaborators who make university your own.",
-    keywords: ["CircleCross Uni", "campus", "university", "students", "clubs"],
+      "The relationship and participation layer for university life. Connects orientation, Unit Circles, CrossPoints, Skill Circle, and lifelong alumni ties.",
+    keywords: [
+      "CircleCross Uni",
+      "ConnectOS",
+      "university participation",
+      "campus life",
+      "Unit Circles",
+      "First 50",
+      "CrossPoints",
+      "students",
+      "peer study",
+    ],
     jsonLdType: "WebPage",
-    ogTitle: "CircleCross Uni",
-    ogDescription: "Find your kind of campus. A place to belong.",
+    ogTitle: "CircleCross Uni · ConnectOS",
+    ogDescription: "The relationship and participation layer for university life.",
   },
   "/pro": {
     path: "/pro",
