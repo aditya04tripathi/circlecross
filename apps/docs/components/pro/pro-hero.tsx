@@ -41,14 +41,14 @@ export function ProHero() {
       {/* 3D Executive Synapse Lattice */}
       <ProWorld />
 
-      {/* Cinematic 2-Line Heading */}
+      {/* Cinematic 2-Line Heading (3/4 Width) */}
       <h1
-        className={`${hHero} relative z-[2] mt-8 mb-6 max-w-[15ch] min-[1400px]:max-w-[17ch] text-[clamp(44px,6.2vw,96px)] leading-[1.08] tracking-[-0.04em]`}
+        className={`${hHero} relative z-[2] mt-8 mb-6 w-full lg:w-3/4 max-w-5xl text-[clamp(44px,6.2vw,96px)] leading-[1.08] tracking-[-0.04em]`}
       >
         The relationship layer for <em>professional life.</em>
       </h1>
 
-      <p className="relative z-[2] max-w-[34ch] text-[clamp(22px,2.6vw,36px)] leading-[1.24] tracking-[-0.035em] text-[#30313f]">
+      <p className="relative z-[2] w-full lg:w-3/4 max-w-4xl text-[clamp(22px,2.6vw,36px)] leading-[1.24] tracking-[-0.035em] text-[#30313f]">
         Discover colleagues, mentors, collaborators, and opportunities through trusted context and
         consent-based real-world experiences.
       </p>

@@ -121,7 +121,7 @@ export function UniWorld() {
 
   return (
     <div
-      className="pointer-events-none absolute top-[40px] right-[-30px] -z-10 h-[min(64vw,880px)] w-[min(64vw,880px)] max-[1100px]:top-[90px] max-[1100px]:right-[-70px] max-[1100px]:h-[76vw] max-[1100px]:w-[76vw] max-md:top-[220px] max-md:right-[-18%] max-md:h-[110vw] max-md:max-h-[580px] max-md:w-[110vw] max-md:max-w-[580px] max-md:opacity-[0.85]"
+      className="pointer-events-none absolute top-[40px] right-[-60px] lg:right-[-40px] xl:right-[-10px] -z-10 h-[min(60vw,820px)] w-[min(60vw,820px)] opacity-40 transition-opacity duration-700 max-[1100px]:top-[90px] max-[1100px]:right-[-80px] max-[1100px]:h-[72vw] max-[1100px]:w-[72vw] max-md:top-[220px] max-md:right-[-20%] max-md:h-[100vw] max-md:max-h-[520px] max-md:w-[100vw] max-md:max-w-[520px] max-md:opacity-30"
       ref={host}
       aria-hidden="true"
       data-uni-world
@@ -129,7 +129,7 @@ export function UniWorld() {
       <UniFallback />
       {enabled && (
         <SceneBoundary>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--paper)_35%,transparent_72%)] [&_canvas]:relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--paper)_25%,transparent_75%)] [&_canvas]:relative">
             <Scene progress={progress} active={active} />
           </div>
         </SceneBoundary>

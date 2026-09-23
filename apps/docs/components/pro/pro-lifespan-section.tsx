@@ -4,16 +4,16 @@ import { eyebrow, hSection, pageInset } from "../styles";
 export function ProLifespanSection() {
   return (
     <section className={`${pageInset} py-28 md:py-36 border-t border-border`}>
-      <div className="w-full lg:w-3/4 max-w-5xl">
-        <p className={eyebrow}>Career Lifespan Architecture</p>
-        <h2 className={`${hSection} mb-6 w-full`}>
-          A relationship graph that outlasts <em>any single employer.</em>
-        </h2>
-        <p className="text-base leading-[1.8] text-soft max-w-[65ch]">
-          Corporate tools like Slack, Teams, and internal directories deactivate the minute you hand
-          back your laptop. CircleCross Pro gives you sovereign ownership of your professional
-          network. Every trusted colleague, mentor, and collaborator remains in your constellation
-          forever.
+      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 w-full">
+        <div className="w-full lg:w-3/4 max-w-4xl">
+          <p className={eyebrow}>Career Lifespan Architecture</p>
+          <h2 className={`${hSection} w-full`}>
+            A relationship graph that outlasts <em>any single employer.</em>
+          </h2>
+        </div>
+        <p className="text-base leading-[1.8] text-soft max-w-[48ch] lg:text-right shrink-0">
+          Corporate tools deactivate the minute you hand back your laptop. CircleCross Pro gives you
+          sovereign ownership of your professional network forever.
         </p>
       </div>
 
@@ -56,9 +56,12 @@ export function ProLifespanSection() {
         </div>
       </div>
 
-      <div className="mt-6 flex items-center gap-2 text-xs font-[500] text-soft">
-        <ShieldCheck className="size-4 text-copper" />
-        <span>Full privacy control: your employer never sees your independent graph.</span>
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-xs font-[500] text-soft">
+        <div className="flex items-center gap-2">
+          <ShieldCheck className="size-4 text-copper" />
+          <span>Full privacy control: your employer never sees your independent graph.</span>
+        </div>
+        <span className="font-mono text-[11px] text-soft/80">Sovereignty Protocol v2.4</span>
       </div>
     </section>
   );
