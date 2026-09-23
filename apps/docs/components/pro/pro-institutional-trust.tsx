@@ -103,10 +103,10 @@ export function ProInstitutionalTrust() {
         </p>
       </div>
 
-      {/* Clean Interactive Deployment Matrix (No 6-Card Bloat) */}
-      <div className="mt-16 grid grid-cols-12 gap-10 items-start max-lg:gap-8">
-        {/* Package Selector List with Hairlines */}
-        <div className="col-span-12 lg:col-span-5 divide-y divide-line/70 border-y border-line/70">
+      {/* Clean Interactive Deployment Matrix (Matching Height) */}
+      <div className="mt-16 grid grid-cols-12 gap-10 items-stretch max-lg:gap-8">
+        {/* Package Selector List with Hairlines (Full Height) */}
+        <div className="col-span-12 lg:col-span-5 flex flex-col justify-between divide-y divide-line/70 border-y border-line/70 h-full">
           {ENTERPRISE_PACKAGES.map((pkg) => {
             const isSelected = pkg.id === selectedId;
             const Icon = pkg.icon;
@@ -115,7 +115,7 @@ export function ProInstitutionalTrust() {
                 key={pkg.id}
                 type="button"
                 onClick={() => setSelectedId(pkg.id)}
-                className={`group flex w-full items-center justify-between py-4 text-left transition-opacity duration-200 ${
+                className={`group flex flex-1 items-center justify-between py-4 text-left transition-opacity duration-200 ${
                   isSelected ? "opacity-100" : "opacity-60 hover:opacity-90"
                 }`}
               >
@@ -140,14 +140,16 @@ export function ProInstitutionalTrust() {
           })}
         </div>
 
-        {/* Selected Package Spotlight */}
-        <div className="col-span-12 lg:col-span-7 rounded-[2rem] bg-black/5 p-1.5 ring-1 ring-black/5">
-          <div className="rounded-[calc(2rem-0.375rem)] bg-paper p-8 md:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
-            <span className="text-[10px] font-[650] tracking-[0.08em] text-pro uppercase">
-              {activePkg.focus}
-            </span>
-            <h3 className="mt-2 text-2xl font-[650] text-ink">{activePkg.name}</h3>
-            <p className="mt-4 text-sm leading-[1.8] text-soft">{activePkg.description}</p>
+        {/* Selected Package Spotlight (Matching Height) */}
+        <div className="col-span-12 lg:col-span-7 flex flex-col rounded-[2rem] bg-black/5 p-1.5 ring-1 ring-black/5 h-full">
+          <div className="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-paper p-8 md:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
+            <div>
+              <span className="text-[10px] font-[650] tracking-[0.08em] text-pro uppercase">
+                {activePkg.focus}
+              </span>
+              <h3 className="mt-2 text-2xl font-[650] text-ink">{activePkg.name}</h3>
+              <p className="mt-4 text-sm leading-[1.8] text-soft">{activePkg.description}</p>
+            </div>
 
             <div className="mt-8 border-t border-line/70 pt-6">
               <span className="text-xs font-[650] tracking-[0.04em] text-ink uppercase">

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Compass, GraduationCap, Layers, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowRight, Compass, GraduationCap, Layers, MapPin } from "lucide-react";
 import { useState } from "react";
 import { eyebrow, hSection, pageInset } from "../styles";
 
@@ -96,11 +96,11 @@ export function ProConnectOsGrid() {
         </p>
       </div>
 
-      {/* Editorial Interactive Comparison Architecture (No Card Inception) */}
-      <div className="mt-16 grid grid-cols-12 gap-10 items-start max-lg:gap-8">
-        {/* Domain Navigation List with Crisp Hairline Dividers */}
+      {/* Editorial Interactive Comparison Architecture (Matching Height) */}
+      <div className="mt-16 grid grid-cols-12 gap-10 items-stretch max-lg:gap-8">
+        {/* Domain Navigation List with Crisp Hairline Dividers (Stretching Full Height) */}
         <div
-          className="col-span-12 lg:col-span-5 divide-y divide-line/70 border-y border-line/70"
+          className="col-span-12 lg:col-span-5 flex flex-col justify-between divide-y divide-line/70 border-y border-line/70 h-full"
           role="tablist"
         >
           {PRO_DOMAINS.map((domain) => {
@@ -113,7 +113,7 @@ export function ProConnectOsGrid() {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setActiveId(domain.id)}
-                className={`group flex w-full items-center justify-between py-6 text-left transition-all duration-300 ${
+                className={`group flex flex-1 items-center justify-between py-6 text-left transition-all duration-300 ${
                   isSelected ? "opacity-100" : "opacity-60 hover:opacity-90"
                 }`}
               >
@@ -142,21 +142,11 @@ export function ProConnectOsGrid() {
           })}
         </div>
 
-        {/* Dynamic Protocol Stage */}
-        <div className="col-span-12 lg:col-span-7 rounded-[2rem] bg-black/5 p-1.5 ring-1 ring-black/5">
-          <div className="rounded-[calc(2rem-0.375rem)] bg-paper p-8 md:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
-            <div className="flex items-center justify-between border-b border-line/70 pb-5">
-              <span className="text-[11px] font-[650] tracking-[0.08em] text-[#343547] uppercase">
-                Enterprise Interface Protocol
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-xs text-soft font-[500]">
-                <ShieldCheck className="size-3.5 text-pro" />
-                Zero Surveillance Guarantee
-              </span>
-            </div>
-
+        {/* Dynamic Protocol Stage (Matching Full Height, Redundant Header Removed) */}
+        <div className="col-span-12 lg:col-span-7 flex flex-col rounded-[2rem] bg-black/5 p-1.5 ring-1 ring-black/5 h-full">
+          <div className="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-paper p-8 md:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
             {/* Corporate vs CircleCross Protocol Flow */}
-            <div className="mt-8 space-y-6">
+            <div className="space-y-6">
               {/* Corporate System */}
               <div className="border-l-2 border-line pl-4">
                 <span className="text-[10px] font-[650] tracking-[0.06em] text-soft uppercase">
