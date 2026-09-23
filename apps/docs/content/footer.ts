@@ -18,7 +18,6 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Product",
     links: [
-      { label: "CircleCross Go", href: "/go" },
       { label: "CircleCross Uni", href: "/uni" },
       { label: "CircleCross Pro", href: "/pro" },
     ],

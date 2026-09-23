@@ -24,7 +24,7 @@ export const privacyDoc: LegalDoc = {
   sections: [
     {
       heading: "Scope",
-      body: "This page applies to the CircleCross marketing website. It does not cover CircleCross Go, Uni, or Pro product accounts, which are not offered on this site today.",
+      body: "This page applies to the CircleCross marketing website. It does not cover CircleCross Uni, or Pro product accounts, which are not offered on this site today.",
     },
     {
       heading: "What we do not collect on this site",
@@ -32,7 +32,7 @@ export const privacyDoc: LegalDoc = {
     },
     {
       heading: "World preference cookie",
-      body: "If you choose a CircleCross world, your preference is stored in a first party cookie named circlecross-world with the value Go, Uni, or Pro. The cookie uses Path=/, SameSite=Lax, and a one year Max-Age. It is readable by this site's scripts so the marketing pages can reflect your choice. It is not an account cookie and is not HttpOnly. You can remove it by clearing cookies for this site (circlecross.app, or your local host while developing).",
+      body: "If you choose a CircleCross world, your preference is stored in a first party cookie named circlecross-world with the value Uni, or Pro. The cookie uses Path=/, SameSite=Lax, and a one year Max-Age. It is readable by this site's scripts so the marketing pages can reflect your choice. It is not an account cookie and is not HttpOnly. You can remove it by clearing cookies for this site (circlecross.app, or your local host while developing).",
     },
     {
       heading: "Hosting technical logs",
@@ -40,7 +40,7 @@ export const privacyDoc: LegalDoc = {
     },
     {
       heading: "Product privacy",
-      body: "CircleCross Go, Uni, and Pro are introduced here as upcoming experiences. Product specific privacy information and consent controls will need to be available before account registration opens. This page does not describe future product data practices beyond that statement.",
+      body: "CircleCross Uni, and Pro are introduced here as upcoming experiences. Product specific privacy information and consent controls will need to be available before account registration opens. This page does not describe future product data practices beyond that statement.",
     },
     {
       heading: "Contact",

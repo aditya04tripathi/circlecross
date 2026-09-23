@@ -37,16 +37,6 @@ test.describe("docs interactions", () => {
     await expect(page.getByRole("contentinfo")).toBeVisible();
     await expect(page.locator("[aria-hidden='true'].fixed")).toBeVisible();
 
-    await page.locator("#go").scrollIntoViewIfNeeded();
-    await page
-      .getByRole("button", { name: /CircleCross Go/i })
-      .first()
-      .click();
-    await expect(page.getByText("Explore CircleCross Go")).toBeVisible();
-    await expect(page.getByRole("link", { name: /Explore CircleCross Go/i })).toHaveAttribute(
-      "href",
-      "/go",
-    );
     await expect(page.getByText("For example:")).toHaveCount(3);
 
     await page.goto("/privacy");

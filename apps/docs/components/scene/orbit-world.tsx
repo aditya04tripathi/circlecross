@@ -32,8 +32,40 @@ export function OrbitWorld() {
       }
       setEnabled(!media.matches && supported);
     };
-    update();
-    media.addEventListener("change", update);
+
+    let idleId: number | undefined;
+    let timerId: ReturnType<typeof setTimeout> | undefined;
+
+    const scheduleEnable = () => {
+      if (media.matches) {
+        setEnabled(false);
+        return;
+      }
+      if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(update, { timeout: 3000 });
+      } else {
+        timerId = setTimeout(update, 2000);
+      }
+    };
+
+    const onActivity = () => {
+      update();
+    };
+
+    window.addEventListener("pointermove", onActivity, { once: true, passive: true });
+    window.addEventListener("scroll", onActivity, { once: true, passive: true });
+    window.addEventListener("touchstart", onActivity, { once: true, passive: true });
+
+    scheduleEnable();
+
+    const onMediaChange = () => {
+      if (media.matches) {
+        setEnabled(false);
+      } else {
+        update();
+      }
+    };
+    media.addEventListener("change", onMediaChange);
     let inView = true;
     const visibility = () => setActive(inView && !document.hidden);
     document.addEventListener("visibilitychange", visibility);
@@ -65,8 +97,15 @@ export function OrbitWorld() {
       disposed = true;
       cleanup?.();
       observer?.disconnect();
-      media.removeEventListener("change", update);
+      media.removeEventListener("change", onMediaChange);
       document.removeEventListener("visibilitychange", visibility);
+      window.removeEventListener("pointermove", onActivity);
+      window.removeEventListener("scroll", onActivity);
+      window.removeEventListener("touchstart", onActivity);
+      if (idleId && typeof window !== "undefined" && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timerId) clearTimeout(timerId);
     };
   }, []);
   return (

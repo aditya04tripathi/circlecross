@@ -191,7 +191,7 @@ export function Encounter() {
         </fieldset>
         <h3 className="mt-6 text-lg font-[450] tracking-[-0.03em]">{item.name}</h3>
         <p className="mt-2 max-w-[360px] text-sm leading-[1.7] text-[#5a6151]">{item.detail}</p>
-        <p className="mt-4 text-[10px] tracking-[0.06em] text-[#626c4d]/80 uppercase max-md:mt-3">
+        <p className="mt-4 text-[10px] tracking-[0.06em] text-[#373d2b] uppercase max-md:mt-3">
           {crossed ? "Paths crossed" : "Scroll to cross paths"}
         </p>
       </div>

@@ -30,7 +30,7 @@ export function ProductChapter({ world, cta }: ProductChapterProps) {
             alt={world.alt}
             width={1000}
             height={700}
-            sizes="(max-width: 767px) 90vw, 48vw"
+            sizes="(max-width: 767px) 90vw, (max-width: 1200px) 48vw, 550px"
           />
           <span className="absolute bottom-5 left-5 rounded-[20px] bg-[#272b24b0] px-[13px] py-2 text-[11px] text-white">
             Life, with your people.

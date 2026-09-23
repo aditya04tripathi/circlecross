@@ -12,10 +12,10 @@ import { Logo } from "./logo";
 import { eyebrow, pageInset } from "./styles";
 import { WorldRows } from "./world-rows";
 
-const VALID: WorldChoice[] = ["Go", "Uni", "Pro"];
+const VALID: WorldChoice[] = ["Uni", "Pro"];
 
 export function Start() {
-  const [choice, setChoice] = useState<WorldChoice>("Go");
+  const [choice, setChoice] = useState<WorldChoice>("Uni");
   const [saved, setSaved] = useState<"idle" | "saved" | "unavailable">("idle");
   const labelId = useId();
 

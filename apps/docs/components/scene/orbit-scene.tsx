@@ -95,7 +95,7 @@ function Sculpture({ progress }: { progress: RefObject<number> }) {
 export function OrbitScene({ progress, active }: { progress: RefObject<number>; active: boolean }) {
   return (
     <Canvas
-      dpr={[1, 1.5]}
+      dpr={[1, 1.2]}
       frameloop={active ? "always" : "never"}
       camera={{ position: [0, 0, 8.2], fov: 43 }}
       gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}

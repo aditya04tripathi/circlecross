@@ -11,10 +11,9 @@ export function StoryMotion() {
         const mm = gsap.matchMedia();
         mm.add("(prefers-reduced-motion: no-preference)", () => {
           gsap.from("[data-hero-title] > span", {
-            y: 70,
-            opacity: 0,
-            duration: 1.4,
-            stagger: 0.14,
+            y: 35,
+            duration: 1,
+            stagger: 0.1,
             ease: "power3.out",
           });
           gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {

@@ -22,10 +22,6 @@ const routeSitemapConfig: Record<
     changeFrequency: "weekly",
     priority: 0.9,
   },
-  "/go": {
-    changeFrequency: "weekly",
-    priority: 0.9,
-  },
   "/privacy": {
     changeFrequency: "monthly",
     priority: 0.3,

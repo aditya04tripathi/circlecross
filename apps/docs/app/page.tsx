@@ -168,6 +168,7 @@ export default function Home() {
                 alt="Friends connecting on campus"
                 width={180}
                 height={90}
+                sizes="(max-width: 767px) 90px, 145px"
               />
             </span>
             <p className="max-w-[420px] text-sm leading-[1.8] text-soft max-md:max-w-[calc(100%-110px)] max-md:text-xs max-md:leading-[1.8]">
@@ -233,8 +234,6 @@ export default function Home() {
             className="mt-auto flex w-[110%] items-center gap-[35px] pt-16 text-[60px] tracking-[-0.06em] max-[1100px]:text-[50px] max-md:mt-14 max-md:w-full max-md:gap-[18px] max-md:pt-10 max-md:text-[40px] [&>i]:relative [&>i]:h-px [&>i]:min-w-[60px] [&>i]:flex-1 [&>i]:bg-[#b6c79d50] max-md:[&>i]:min-w-5 [&>i]:before:absolute [&>i]:before:top-[-4px] [&>i]:before:left-[35%] [&>i]:before:size-[9px] [&>i]:before:rounded-full [&>i]:before:bg-[#cfdaae] [&>i]:before:shadow-[0_0_20px_#aabd73] [&>svg]:mr-[10%] [&>svg]:w-[35px] max-md:[&>svg]:hidden"
             data-identity-track
           >
-            <span>Go</span>
-            <i />
             <span>Uni</span>
             <i />
             <span>Pro</span>
@@ -265,7 +264,7 @@ export default function Home() {
                   alt="Two people sharing a quiet outdoor moment, with comfortable space between them"
                   width={1000}
                   height={700}
-                  sizes="(max-width: 767px) 90vw, 48vw"
+                  sizes="(max-width: 767px) 90vw, (max-width: 1200px) 48vw, 550px"
                 />
                 <PresenceControlIllustration className="absolute bottom-5 left-5 max-w-[220px]" />
               </div>

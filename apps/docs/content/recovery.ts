@@ -6,7 +6,6 @@ export type RecoveryCopy = {
 export const recoveryHomeLabel = "Back to CircleCross";
 
 export const recoveryWorldLinks = [
-  { label: "CircleCross Go", href: "/go" },
   { label: "CircleCross Uni", href: "/uni" },
   { label: "CircleCross Pro", href: "/pro" },
 ] as const;

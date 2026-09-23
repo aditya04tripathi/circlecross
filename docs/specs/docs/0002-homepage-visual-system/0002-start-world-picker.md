@@ -14,7 +14,7 @@ Replace the start section carousel, wheel, and select experiments with three qui
 
 **Acceptance criteria**:
 
-1. **AC-1**: The start action shows exactly three stacked rows labelled `CircleCross Go`, `CircleCross Uni`, and `CircleCross Pro`. No horizontal carousel, wheel, dropdown select, or second primary CTA button appears in this block.
+1. **AC-1**: The start action shows exactly three stacked rows labelled `CircleCross Uni`, and `CircleCross Pro`. No horizontal carousel, wheel, dropdown select, or second primary CTA button appears in this block.
 2. **AC-2**: Tapping a row highlights it with copper emphasis and immediately writes that world to `localStorage` under `circlecross-world`. Status moves to saved (or unavailable on failure).
 3. **AC-3**: There is no separate “Choose your circle” button. Feedback is a status line only (`role="status"`).
 4. **AC-4**: On first visit with no valid stored value, Go is highlighted and status stays idle (not claimed as saved). On return, a valid stored value is restored as highlight and status shows already saved.
@@ -57,7 +57,7 @@ Status: `idle` → `saved` on successful write; `idle` or `saved` → `unavailab
 
 | Action | Value displayed | Source |
 | --- | --- | --- |
-| Row labels | CircleCross Go / Uni / Pro | Fixed labels from worlds names in `content/worlds.ts` (name field only) |
+| Row labels | CircleCross  Uni / Pro | Fixed labels from worlds names in `content/worlds.ts` (name field only) |
 | Active highlight | Which row is copper | React state; seeded from `localStorage` or default `Go` |
 | Status saved copy | World name in message | The activated world string just written |
 | Status unavailable copy | World name in message | The activated world string that failed to write |

@@ -63,9 +63,14 @@ export function WorldRows({ value, onActivate, labelledBy, className }: WorldRow
               className="sr-only"
               onChange={() => onActivate(world.name)}
             />
-            <span>
+            <span className={cn(active ? "text-white font-medium" : "text-start-cream")}>
               CircleCross{" "}
-              <em className={cn("not-italic", active ? "text-copper-deep" : "text-start-cream")}>
+              <em
+                className={cn(
+                  "not-italic",
+                  active ? "font-semibold text-white" : "text-start-cream",
+                )}
+              >
                 {world.name}
               </em>
             </span>

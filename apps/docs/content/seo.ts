@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const OG_TITLE_MAX = 60;
 export const OG_DESCRIPTION_MAX = 90;
 
-export const indexablePaths = ["/", "/go", "/uni", "/pro", "/privacy", "/terms"] as const;
+export const indexablePaths = ["/", "/uni", "/pro", "/privacy", "/terms"] as const;
 
 export type IndexablePath = (typeof indexablePaths)[number];
 
@@ -52,7 +52,7 @@ export const seoDefaults: SeoDefaults = {
   siteName: "CircleCross",
   titleTemplate: "%s · CircleCross",
   defaultDescription:
-    "A little closer to your people. Discover CircleCross Go, Uni and Pro: meaningful connections for every chapter of your life.",
+    "A little closer to your people. Discover CircleCross Uni and Pro: meaningful connections for every chapter of your life.",
   locale: "en_AU",
   twitterCard: "summary_large_image",
   organization: {
@@ -71,20 +71,10 @@ export const seoPages: Record<IndexablePath, SeoPage> = {
     path: "/",
     title: "Life happens where circles cross.",
     description: seoDefaults.defaultDescription,
-    keywords: ["CircleCross", "social", "community", "Go", "Uni", "Pro", "connections"],
+    keywords: ["CircleCross", "social", "community", "Uni", "Pro", "connections"],
     jsonLdType: "WebSite",
     ogTitle: "CircleCross",
     ogDescription: "Life happens where circles cross.",
-  },
-  "/go": {
-    path: "/go",
-    title: "Go",
-    description:
-      "New places. New interests. People who just get you. Make the first move towards a world that feels a little more yours.",
-    keywords: ["CircleCross Go", "explore", "new places", "interests", "friends"],
-    jsonLdType: "WebPage",
-    ogTitle: "CircleCross Go",
-    ogDescription: "Follow your curiosity. A little more adventure.",
   },
   "/uni": {
     path: "/uni",
