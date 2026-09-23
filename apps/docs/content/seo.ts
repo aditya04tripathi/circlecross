@@ -183,7 +183,14 @@ export function generateSeo(path: IndexablePath, overrides?: Partial<SeoPage>): 
     title: isHome ? { absolute: `${seoDefaults.siteName} — ${page.title}` } : page.title,
     description: page.description,
     keywords: page.keywords,
-    alternates: { canonical },
+    category: "social",
+    alternates: {
+      canonical,
+      languages: {
+        "en-AU": canonical,
+        "x-default": canonical,
+      },
+    },
     robots: page.robots,
     openGraph: {
       title: og.title,
@@ -252,12 +259,31 @@ export function getJsonLd(path: IndexablePath): Record<string, unknown> {
     };
   }
 
+  const breadcrumbs = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: origin,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: page.title,
+        item: pageUrl,
+      },
+    ],
+  };
+
   return {
     "@context": "https://schema.org",
     "@graph": [
       { ...organization, "@id": `${origin}/#organization` },
       { ...website, "@id": `${origin}/#website` },
       { ...pageNode, "@id": `${pageUrl}#webpage` },
+      { ...breadcrumbs, "@id": `${pageUrl}#breadcrumb` },
     ],
   };
 }

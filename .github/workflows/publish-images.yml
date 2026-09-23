@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        app: [admin, api, docs, go, pro, uni, worker]
+        app: [admin, docs, pro, uni]
     permissions: { contents: read, packages: write }
     steps:
       - uses: actions/checkout@v4

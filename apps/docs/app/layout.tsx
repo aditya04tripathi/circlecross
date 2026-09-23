@@ -21,9 +21,26 @@ export const metadata: Metadata = {
     template: seoDefaults.titleTemplate,
   },
   description: seoDefaults.defaultDescription,
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "CircleCross",
+  },
+  formatDetection: {
+    telephone: false,
+    date: false,
+    address: false,
+    email: false,
+  },
 };
 
-export const viewport: Viewport = { themeColor: "#f4f1e9" };
+export const viewport: Viewport = {
+  themeColor: "#f4f1e9",
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

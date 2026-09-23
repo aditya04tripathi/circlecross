@@ -1,0 +1,23 @@
+# CircleCross
+
+> Life happens where circles cross. Different paths. Shared possibilities.
+
+CircleCross is a platform designed for meaningful human connection across distinct chapters of life. Rather than one generic feed, CircleCross provides intentional spaces called "Worlds" tailored for specific contexts and communities.
+
+## Core Worlds
+
+- [Uni](/uni): Campus life that feels like yours. Find friends, study partners, clubs, and collaborators from the first lecture to the last night of term.
+- [Pro](/pro): Good work starts with people. Meet thoughtful people, exchange ideas, and build professional relationships with room to grow.
+- [Go](/go): Follow your curiosity. New places, new interests, and people who just get you to make the first move feel possible.
+
+## Foundations
+
+- [Homepage](/) : Public portal and overview of the CircleCross mission, principles, and worlds.
+- [Privacy Notice](/privacy) : How the CircleCross marketing website handles your visit and data.
+- [Terms of Use](/terms) : Informational terms for using the public CircleCross website.
+
+## Philosophy
+
+- **Belonging over broadcasting**: Small, meaningful circles rather than vanity follower counts.
+- **Intentional contexts**: Work, study, and leisure remain distinct so you can show up authentically.
+- **Privacy by design**: Preference saving is local-first, respecting user sovereignty.
