@@ -1,6 +1,6 @@
 export type World = {
   id: "uni" | "pro";
-  name: "Uni" | "Pro";
+  name: "University" | "Professional";
   theme: string;
   accent: string;
   headline: string;
@@ -15,7 +15,7 @@ export type World = {
 export const worlds: World[] = [
   {
     id: "uni",
-    name: "Uni",
+    name: "University",
     theme: "uni",
     accent: "text-olive",
     headline: "Find your kind of campus.",
@@ -37,7 +37,7 @@ export const worlds: World[] = [
   },
   {
     id: "pro",
-    name: "Pro",
+    name: "Professional",
     theme: "pro",
     accent: "text-pro",
     headline: "Good work starts with people.",

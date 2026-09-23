@@ -10,7 +10,7 @@ import { chapterTrigger, eyebrow, hSection, pageInset, pyDense } from "./styles"
 import { Arrow } from "./ui";
 
 export function Worlds() {
-  const [active, setActive] = useState("go");
+  const [active, setActive] = useState(worlds[0]?.id ?? "uni");
 
   return (
     <section
